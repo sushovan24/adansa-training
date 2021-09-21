@@ -1,0 +1,29 @@
+package Revision;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class HashMapToArrayList {
+
+    public static void main(String[] args) {
+        HashMap<Integer, String> map = new HashMap<>();
+        map.put(1, "one");
+        map.put(2, "two");
+        map.put(3, "three");
+        map.put(4, "four");
+        map.put(5, "five");
+
+        ArrayList<Integer> integer = new ArrayList<>();
+        ArrayList<String> string = new ArrayList<>();
+        for (Map.Entry entry : map.entrySet()) {
+
+            integer.add((Integer) entry.getKey());
+            string.add((String) entry.getValue());
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+
+        System.out.println(integer);
+        System.out.println(string);
+    }
+}
