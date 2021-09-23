@@ -1,7 +1,7 @@
 
-package com.rajpractice.raj.training;
+package com.practice.rajtraining;
 
-import com.rajpractice.datetime.DateTimeExample;
+import com.practice.rajtraining.datetime.DateTimeExample;
 import java.text.ParseException;
 import java.util.Scanner;
 

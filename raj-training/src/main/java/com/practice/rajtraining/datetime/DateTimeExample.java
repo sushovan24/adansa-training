@@ -1,5 +1,5 @@
 
-package com.rajpractice.datetime;
+package com.practice.rajtraining.datetime;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

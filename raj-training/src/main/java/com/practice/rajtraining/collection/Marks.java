@@ -1,5 +1,5 @@
 
-package com.practice.raj.training.collection;
+package com.practice.rajtraining.collection;
 
 
 public class Marks {

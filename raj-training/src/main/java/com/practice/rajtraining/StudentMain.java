@@ -1,10 +1,10 @@
-package com.practice.raj.training.main;
+package com.practice.rajtraining;
 
-import com.practice.raj.training.collection.ClassDetails;
-import com.practice.raj.training.collection.Marks;
-import com.practice.raj.training.collection.Mixture;
-import com.practice.raj.training.collection.Student;
-import com.practice.raj.training.collection.StudentDetails;
+import com.practice.rajtraining.collection.ClassDetails;
+import com.practice.rajtraining.collection.Marks;
+import com.practice.rajtraining.collection.Mixture;
+import com.practice.rajtraining.collection.Student;
+import com.practice.rajtraining.collection.StudentDetails;
 import java.util.ArrayList;
 
 public class StudentMain {
