@@ -10,7 +10,7 @@ public class App {
         StudentHelp s = new StudentHelp();
         s.mixtureList();
 
-        DateHelp dt = new DateHelp();
-        dt.InputDate();
+//        DateHelp dt = new DateHelp();
+//        dt.InputDate();
     }
 }
