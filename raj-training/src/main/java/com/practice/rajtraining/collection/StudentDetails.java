@@ -3,6 +3,7 @@ package com.practice.rajtraining.collection;
 
 
 public class StudentDetails {
+
     //StudentDetails[id<int>, stud_id<int>, mobile<String>]
     private int id;
     private int stud_id;
@@ -31,6 +32,6 @@ public class StudentDetails {
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
-    
+
     
 }

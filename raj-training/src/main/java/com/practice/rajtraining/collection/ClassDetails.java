@@ -9,8 +9,8 @@ public class ClassDetails {
     
     private int id;
     private String className;
-    private Date startTime;
-    private Date endTime;
+    Date startTime;
+    Date endTime;
     private int stud_id;
 
     public int getId() {
