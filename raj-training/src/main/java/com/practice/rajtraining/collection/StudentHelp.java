@@ -64,6 +64,14 @@ public class StudentHelp {
         list.add(m1);
 
         m1 = new Mixture();
+        m1.setStud_id(109);
+        m1.setStud_name("monu");
+        m1.setMobile("8532145658");
+        m1.setSubject("ACT");
+        m1.setMarks(78);
+        list.add(m1);
+
+        m1 = new Mixture();
         m1.setStud_id(105);
         m1.setStud_name("pappu");
         m1.setMobile("7562088722");
@@ -96,17 +104,17 @@ public class StudentHelp {
         list.add(m1);
 
         m1 = new Mixture();
-        m1.setStud_id(109);
-        m1.setStud_name("monu");
-        m1.setMobile("8532145658");
-        m1.setSubject("ACT");
-        m1.setMarks(78);
+        m1.setStud_id(108);
+        m1.setStud_name("aditya");
+        m1.setMobile("6932456874");
+        m1.setSubject("BIO");
+        m1.setMarks(85);
         list.add(m1);
 
         m1 = new Mixture();
-        m1.setStud_id(110);
-        m1.setStud_name("sonu");
-        m1.setMobile("9523246185");
+        m1.setStud_id(109);
+        m1.setStud_name("monu");
+        m1.setMobile("8532145658");
         m1.setSubject("SSC");
         m1.setMarks(75);
         list.add(m1);
@@ -178,10 +186,16 @@ public class StudentHelp {
     public void printMarks(ArrayList<Marks> list) {
         System.out.println("marks............");
         System.out.println("id     stud_id      subject       marks");
-        for (Marks m : list) {
-            System.out.println(m.getId() + "   " + m.getStud_id() + "       " + m.getSubject() + "      " + m.getMarks());
+
+        for (i = 0; i < list.size() - 1; i++) {
+            if (list.get(i).getStud_id() == list.get(i + 1).getStud_id()) {
+                System.out.println(list.get(i).getId() + "    " + list.get(i).getStud_id() + " " + list.get(i).getSubject() + "    " + list.get(i).getMarks());
+                i++;
+            } else {
+                System.out.println(list.get(i).getId() + "    " + list.get(i).getStud_id() + " " + list.get(i).getSubject() + "    " + list.get(i).getMarks());
+            }
         }
-        System.out.println("");
+
     }
 
     public void printStudentDetails(ArrayList<StudentDetails> list) {
@@ -189,7 +203,7 @@ public class StudentHelp {
         System.out.println("id        student_id     student_mobile");
 
         for (i = 0; i < list.size() - 1; i++) {
-            if (list.get(i).getMobile() == null ? list.get(i + 1).getMobile() == null : list.get(i).getMobile().equals(list.get(i + 1).getMobile())) {
+            if (list.get(i).getStud_id() == list.get(i + 1).getStud_id()) {
                 System.out.println(list.get(i).getId() + "    " + list.get(i).getStud_id() + "    " + list.get(i).getMobile());
                 i++;
             } else {
