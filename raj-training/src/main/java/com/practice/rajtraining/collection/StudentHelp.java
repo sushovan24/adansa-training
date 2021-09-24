@@ -74,7 +74,7 @@ public class StudentHelp {
         m1 = new Mixture();
         m1.setStud_id(106);
         m1.setStud_name("jagriti");
-        m1.setMobile("8745632154");
+        m1.setMobile("7562088722");
         m1.setSubject("Ecology");
         m1.setMarks(68);
         list.add(m1);
@@ -158,13 +158,21 @@ public class StudentHelp {
 
     }
 
+    int i;
+
     public void printStudent(ArrayList<Student> list) {
         System.out.println("student..........");
         System.out.println(" id        name");
-        for (Student sl : list) {
-            System.out.println(sl.getId() + "         " + sl.getName());
+        for (i = 0; i < list.size() - 1; i++) {
+
+            if (list.get(i).getId() == list.get(i + 1).getId()) {
+                System.out.println(list.get(i).getId() + "    " + list.get(i).getName());
+                i++;
+            } else {
+                System.out.println(list.get(i).getId() + "    " + list.get(i).getName());
+            }
         }
-        System.out.println("");
+
     }
 
     public void printMarks(ArrayList<Marks> list) {
@@ -179,10 +187,16 @@ public class StudentHelp {
     public void printStudentDetails(ArrayList<StudentDetails> list) {
         System.out.println("studentdetails............");
         System.out.println("id        student_id     student_mobile");
-        for (StudentDetails sd : list) {
-            System.out.println(sd.getId() + "   " + sd.getStud_id() + "         " + sd.getMobile());
+
+        for (i = 0; i < list.size() - 1; i++) {
+            if (list.get(i).getMobile() == null ? list.get(i + 1).getMobile() == null : list.get(i).getMobile().equals(list.get(i + 1).getMobile())) {
+                System.out.println(list.get(i).getId() + "    " + list.get(i).getStud_id() + "    " + list.get(i).getMobile());
+                i++;
+            } else {
+                System.out.println(list.get(i).getId() + "    " + list.get(i).getStud_id() + "    " + list.get(i).getMobile());
+            }
         }
-        System.out.println("");
+
     }
 
     public void printClassDetails(ArrayList<ClassDetails> list) {
