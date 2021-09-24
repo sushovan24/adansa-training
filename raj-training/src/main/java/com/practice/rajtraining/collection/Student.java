@@ -22,4 +22,8 @@ public class Student {
     }
     
     
+    public void randId(){
+        int k=(int) ((int)999* Math.random());
+        System.out.println(k);
+    }
 }

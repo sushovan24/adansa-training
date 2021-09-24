@@ -1,6 +1,7 @@
 package com.practice.rajtraining.collection;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class StudentHelp {
 
@@ -15,10 +16,10 @@ public class StudentHelp {
     ArrayList<StudentDetails> sdList = new ArrayList<>();
     ArrayList<ClassDetails> cdList = new ArrayList<>();
 
-    StudentDetails sd = new StudentDetails();
-    Marks mark = new Marks();
-    ClassDetails cd = new ClassDetails();
-    Student s = new Student();
+    StudentDetails sd;//= new StudentDetails();
+    Marks mark;//= new Marks();
+    ClassDetails cd;// = new ClassDetails();
+    Student s;// = new Student();
 
     public void mixtureList() {
         ArrayList<Mixture> list = new ArrayList<>();
@@ -31,8 +32,8 @@ public class StudentHelp {
         list.add(m1);
 
         m1 = new Mixture();
-        m1.setStud_id(101);
-        m1.setStud_name("rohan");
+        m1.setStud_id(100);
+        m1.setStud_name("rajkumar");
         m1.setMobile("9852362500");
         m1.setSubject("PHY");
         m1.setMarks(45);
@@ -122,25 +123,34 @@ public class StudentHelp {
             subject = m.getSubject();
             marks = m.getMarks();
 
-            System.out.println(m.getMobile()+"");
+            s = new Student();
+
             s.setId(stud_id);
             s.setName(stud_name);
             studentList.add(s);
 
+            mark = new Marks();
+            setMarkRandomId();
             mark.setStud_id(stud_id);
             mark.setMarks(marks);
             mark.setSubject(subject);
             marksList.add(mark);
 
+            sd = new StudentDetails();
+            setStudentDetailsId();
             sd.setStud_id(stud_id);
             sd.setMobile(mobile);
             sdList.add(sd);
 
+            cd = new ClassDetails();
+            setClassDetailsId();
             cd.setStud_id(stud_id);
             cdList.add(cd);
 
         }
 
+//        ListComparison lc = new ListComparison();
+//        lc.studentComparison(studentList, studentList);
         printStudent(studentList);
         printMarks(marksList);
         printStudentDetails(sdList);
@@ -159,28 +169,49 @@ public class StudentHelp {
 
     public void printMarks(ArrayList<Marks> list) {
         System.out.println("marks............");
-        System.out.println("stud_id      subject       marks");
+        System.out.println("id     stud_id      subject       marks");
         for (Marks m : list) {
-            System.out.println(m.getStud_id() + "       " + m.getSubject() + "      " + m.getMarks());
+            System.out.println(m.getId() + "   " + m.getStud_id() + "       " + m.getSubject() + "      " + m.getMarks());
         }
         System.out.println("");
     }
 
     public void printStudentDetails(ArrayList<StudentDetails> list) {
         System.out.println("studentdetails............");
-        System.out.println("student_id     student_mobile");
+        System.out.println("id        student_id     student_mobile");
         for (StudentDetails sd : list) {
-            System.out.println(sd.getStud_id() + "         " + sd.getMobile());
+            System.out.println(sd.getId() + "   " + sd.getStud_id() + "         " + sd.getMobile());
         }
         System.out.println("");
     }
 
     public void printClassDetails(ArrayList<ClassDetails> list) {
         System.out.println("ClassDetails............");
-        System.out.println("student_id");
+        System.out.println("id         student_id");
         for (ClassDetails cd : list) {
-            System.out.println(cd.getStud_id());
+            System.out.println(cd.getId() + "      " + cd.getStud_id());
         }
         System.out.println("");
     }
+
+    Random r = new Random();
+
+    public void setMarkRandomId() {
+
+        int rand = r.nextInt(100);
+        mark.setId(rand);
+    }
+
+    public void setClassDetailsId() {
+
+        int rand = r.nextInt(200);
+        cd.setId(rand);
+    }
+
+    public void setStudentDetailsId() {
+
+        int rand = r.nextInt(300);
+        sd.setId(rand);
+    }
+
 }

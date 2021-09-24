@@ -17,6 +17,7 @@ public class Marks {
 
     public void setId(int id) {
         this.id = id;
+        
     }
 
     public int getStud_id() {
