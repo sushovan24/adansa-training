@@ -6,6 +6,7 @@ import com.practice.rajtraining.comparable.ComparableExample;
 import com.practice.rajtraining.comparator.ComparatorExample;
 import com.practice.rajtraining.datetime.DateHelp;
 import com.practice.rajtraining.listcompare.ListCompare;
+import com.practice.rajtraining.randomnumbergenerate.RandomNum;
 import java.text.ParseException;
 
 public class App {
@@ -32,5 +33,8 @@ public class App {
 
         ArrayListToHashMap hmap = new ArrayListToHashMap();
         hmap.setData();
+
+        RandomNum rn = new RandomNum();
+        rn.getRandomDetails();
     }
 }

@@ -7,13 +7,13 @@ import java.util.Map;
 
 public class ArrayListToHashMap {
 
-    Student s;
-    int sid;
-    String sname;
-    ArrayList<Student> list = new ArrayList<>();
-    ArrayList<Student> list1 = new ArrayList<>();
-    ArrayList<Student> list2 = new ArrayList<>();
-    HashMap<Integer, List<Student>> map1 = new HashMap<>();
+    private Student s;
+    private int sid;
+    private String sname;
+    private ArrayList<Student> list = new ArrayList<>();
+    private ArrayList<Student> list1 = new ArrayList<>();
+    private ArrayList<Student> list2 = new ArrayList<>();
+    private HashMap<Integer, List<Student>> map1 = new HashMap<>();
 
     public void setData() {
         s = new Student();
