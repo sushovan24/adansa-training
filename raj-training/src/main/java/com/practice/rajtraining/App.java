@@ -1,5 +1,6 @@
 package com.practice.rajtraining;
 
+import com.practice.rajtraining.arraytohashmap.ArrayListToHashMap;
 import com.practice.rajtraining.collection.StudentHelp;
 import com.practice.rajtraining.comparable.ComparableExample;
 import com.practice.rajtraining.comparator.ComparatorExample;
@@ -28,5 +29,8 @@ public class App {
 
         ComparableExample cp = new ComparableExample();
         cp.comparable();
+
+        ArrayListToHashMap hmap = new ArrayListToHashMap();
+        hmap.setData();
     }
 }

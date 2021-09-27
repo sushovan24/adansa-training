@@ -16,11 +16,11 @@ public class DateTimeExample {
         Date fdate = sdf.parse(fromDate);
         Date gdate = sdf.parse(givenDate);
 
-        boolean bool1 = fdate.before(gdate);
-        boolean bool2 = tdate.after(gdate);
+        boolean bool1 = gdate.before(tdate);
+        boolean bool2 = gdate.after(fdate);
 
-        System.out.println("fdate.before(gdate): "+bool1);
-        System.out.println("tdate.after(gdate): "+bool2);
+        System.out.println("gdate.before(tdate): "+bool1);
+        System.out.println("gdate.after(fdate): "+bool2);
         if (bool1 == bool2) {
             System.out.println("given date is true");
         } else {
