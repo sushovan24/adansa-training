@@ -11,7 +11,7 @@ Now Compare:
 
 */
 
-package ArrayList;
+package com.arraylist;
 import java.util.ArrayList;
 import java.util.Objects;
 class CompareArrayList {
