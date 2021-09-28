@@ -1,7 +1,12 @@
 package com.practice.rajtraining.collection;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
+import java.util.Set;
 
 public class StudentHelp {
 
@@ -10,11 +15,6 @@ public class StudentHelp {
     String mobile;
     String subject;
     int marks;
-
-    ArrayList<Student> studentList = new ArrayList<>();
-    ArrayList<Marks> marksList = new ArrayList<>();
-    ArrayList<StudentDetails> sdList = new ArrayList<>();
-    ArrayList<ClassDetails> cdList = new ArrayList<>();
 
     StudentDetails sd;//= new StudentDetails();
     Marks mark;//= new Marks();
@@ -42,7 +42,7 @@ public class StudentHelp {
         m1 = new Mixture();
         m1.setStud_id(102);
         m1.setStud_name("rohit");
-        m1.setMobile("9852368956");
+        m1.setMobile("8298241734");
         m1.setSubject("CHE");
         m1.setMarks(49);
         list.add(m1);
@@ -112,6 +112,14 @@ public class StudentHelp {
         list.add(m1);
 
         m1 = new Mixture();
+        m1.setStud_id(108);
+        m1.setStud_name("aditya");
+        m1.setMobile("6932456874");
+        m1.setSubject("BIO");
+        m1.setMarks(85);
+        list.add(m1);
+
+        m1 = new Mixture();
         m1.setStud_id(109);
         m1.setStud_name("monu");
         m1.setMobile("8532145658");
@@ -119,11 +127,22 @@ public class StudentHelp {
         m1.setMarks(75);
         list.add(m1);
 
+        m1 = new Mixture();
+        m1.setStud_id(109);
+        m1.setStud_name("monu");
+        m1.setMobile("8532145658");
+        m1.setSubject("SSB");
+        m1.setMarks(75);
+        list.add(m1);
+
         display(list);
     }
 
     public void display(ArrayList<Mixture> list) {
-
+        ArrayList<Student> studentList = new ArrayList<>();
+        ArrayList<Marks> marksList = new ArrayList<>();
+        ArrayList<StudentDetails> sdList = new ArrayList<>();
+        ArrayList<ClassDetails> cdList = new ArrayList<>();
         for (Mixture m : list) {
             stud_id = m.getStud_id();
             stud_name = m.getStud_name();
@@ -157,8 +176,6 @@ public class StudentHelp {
 
         }
 
-//        ListComparison lc = new ListComparison();
-//        lc.studentComparison(studentList, studentList);
         printStudent(studentList);
         printMarks(marksList);
         printStudentDetails(sdList);
@@ -169,16 +186,20 @@ public class StudentHelp {
     int i;
 
     public void printStudent(ArrayList<Student> list) {
-        System.out.println("student..........");
-        System.out.println(" id        name");
-        for (i = 0; i < list.size() - 1; i++) {
-
-            if (list.get(i).getId() == list.get(i + 1).getId()) {
-                System.out.println(list.get(i).getId() + "    " + list.get(i).getName());
-                i++;
-            } else {
-                System.out.println(list.get(i).getId() + "    " + list.get(i).getName());
+        HashMap<Integer, Student> map = new HashMap<>();
+        for (Student ss : list) {
+            if (!map.containsKey(ss.getId())) {
+                map.put(ss.getId(), ss);
             }
+        }
+
+        System.out.println("student..........");
+        System.out.println(" id    name");
+
+        s = new Student();
+        for (Map.Entry entry : map.entrySet()) {
+            s = (Student) entry.getValue();
+            System.out.println(s.getId() + "  " + s.getName());
         }
 
     }
@@ -187,39 +208,37 @@ public class StudentHelp {
         System.out.println("marks............");
         System.out.println("id     stud_id      subject       marks");
 
-        for (i = 0; i < list.size() - 1; i++) {
-            if (list.get(i).getStud_id() == list.get(i + 1).getStud_id()) {
-                System.out.println(list.get(i).getId() + "    " + list.get(i).getStud_id() + " " + list.get(i).getSubject() + "    " + list.get(i).getMarks());
-                i++;
-            } else {
-                System.out.println(list.get(i).getId() + "    " + list.get(i).getStud_id() + " " + list.get(i).getSubject() + "    " + list.get(i).getMarks());
-            }
+        HashSet<Marks> set = new HashSet<>(list);
+        for (Marks mm : set) {
+            System.out.println(mm.getId() + "        " + mm.getStud_id() + "         " + mm.getSubject() + "         " + mm.getMarks());
         }
-
     }
 
     public void printStudentDetails(ArrayList<StudentDetails> list) {
         System.out.println("studentdetails............");
-        System.out.println("id        student_id     student_mobile");
+        System.out.println("id  student_id  student_mobile");
 
-        for (i = 0; i < list.size() - 1; i++) {
-            if (list.get(i).getStud_id() == list.get(i + 1).getStud_id()) {
-                System.out.println(list.get(i).getId() + "    " + list.get(i).getStud_id() + "    " + list.get(i).getMobile());
-                i++;
-            } else {
-                System.out.println(list.get(i).getId() + "    " + list.get(i).getStud_id() + "    " + list.get(i).getMobile());
-            }
+        HashSet<StudentDetails> set = new HashSet<>(list);
+        for (StudentDetails sdd : set) {
+            System.out.println(sdd.getId() + "    " + sdd.getStud_id() + "    " + sdd.getMobile());
         }
-
     }
 
     public void printClassDetails(ArrayList<ClassDetails> list) {
         System.out.println("ClassDetails............");
         System.out.println("id         student_id");
-        for (ClassDetails cd : list) {
-            System.out.println(cd.getId() + "      " + cd.getStud_id());
+        HashMap<Integer, ClassDetails> map = new HashMap<>();
+        for (ClassDetails cdd : list) {
+            if (!map.containsKey(cdd.getStud_id())) {
+                map.put(cdd.getStud_id(), cdd);
+            }
         }
-        System.out.println("");
+
+        for (Map.Entry entry : map.entrySet()) {
+            cd = new ClassDetails();
+            cd = (ClassDetails) entry.getValue();
+            System.out.println(cd.getId() + "       " + cd.getStud_id());
+        }
     }
 
     Random r = new Random();

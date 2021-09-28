@@ -1,10 +1,8 @@
-
 package com.practice.rajtraining.collection;
-
 
 public class Marks {
     //Marks[id<int>,stud_id<int>, subject<String>, marks<int>, remarks<String>]
-    
+
     private int id;
     private int stud_id;
     private String subject;
@@ -17,7 +15,7 @@ public class Marks {
 
     public void setId(int id) {
         this.id = id;
-        
+
     }
 
     public int getStud_id() {
@@ -51,6 +49,47 @@ public class Marks {
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
-    
-    
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        // type casting of the argument.
+        Marks other = (Marks) obj;
+
+        // comparing the state of argument with
+        // the state of 'this' Object
+        if (stud_id != other.stud_id) {
+            return false;
+        }
+        if (subject == null) {
+            if (other.subject != null) {
+                return false;
+            }
+        } else if (!subject.equals(other.subject)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + stud_id;
+        result = prime * result
+                + ((subject == null) ? 0 : subject.hashCode());
+        return result;
+    }
+
 }
