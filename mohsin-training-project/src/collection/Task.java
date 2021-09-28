@@ -28,8 +28,8 @@ class TaskR1 {
     public String toString() {
         return "StudentInfo{" + "id=" + id + ", name=" + name + '}';
     }
-
-    public static void main(String[] args) {
+}
+      /*  public static void main(String[] args) {
         List<Student1> list = new ArrayList<>();
 //        Scanner sc = new Scanner(System.in);
 //        System.out.println("Enter how many data you want to store");
@@ -69,3 +69,4 @@ class TaskR1 {
 
     }
 }
+*/

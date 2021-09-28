@@ -14,6 +14,9 @@
 	    private int id;
 	    private String name;
 	    private String course;
+            
+            public void studentDisplay()
+            {
 
 	    public int getId() {
 	        return id;
@@ -43,9 +46,9 @@
 	    @Override
 		public String toString() {
 			return "Student [id=" + id + ", name=" + name + ", course=" + course + "]";
-		}
-
-	    public static void main(String[] args) {
+		}    
+                
+	    //
 	        List<Student1> list = new ArrayList<>();
 //	      
 	        int i;
