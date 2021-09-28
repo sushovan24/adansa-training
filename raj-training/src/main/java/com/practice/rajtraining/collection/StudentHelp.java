@@ -131,7 +131,7 @@ public class StudentHelp {
         m1.setStud_id(109);
         m1.setStud_name("monu");
         m1.setMobile("8532145658");
-        m1.setSubject("SSC");
+        m1.setSubject("SSB");
         m1.setMarks(75);
         list.add(m1);
 
@@ -208,17 +208,9 @@ public class StudentHelp {
         System.out.println("marks............");
         System.out.println("id     stud_id      subject       marks");
 
-        HashMap<Integer, Marks> map = new HashMap<>();
-        for (Marks mm : list) {
-            if (!map.containsKey(mm.getStud_id())) {
-                map.put(mm.getStud_id(), mm);
-            }
-        }
-
-        for (Map.Entry entry : map.entrySet()) {
-            mark = new Marks();
-            mark = (Marks) entry.getValue();
-            System.out.println(mark.getId() + "   " + mark.getStud_id() + "   " + mark.getSubject() + "   " + mark.getMarks());
+        HashSet<Marks> set = new HashSet<>(list);
+        for (Marks mm : set) {
+            System.out.println(mm.getId() + "        " + mm.getStud_id() + "         " + mm.getSubject() + "         " + mm.getMarks());
         }
     }
 
@@ -235,10 +227,18 @@ public class StudentHelp {
     public void printClassDetails(ArrayList<ClassDetails> list) {
         System.out.println("ClassDetails............");
         System.out.println("id         student_id");
-        for (ClassDetails cd : list) {
-            System.out.println(cd.getId() + "      " + cd.getStud_id());
+        HashMap<Integer, ClassDetails> map = new HashMap<>();
+        for (ClassDetails cdd : list) {
+            if (!map.containsKey(cdd.getStud_id())) {
+                map.put(cdd.getStud_id(), cdd);
+            }
         }
-        System.out.println("");
+
+        for (Map.Entry entry : map.entrySet()) {
+            cd = new ClassDetails();
+            cd = (ClassDetails) entry.getValue();
+            System.out.println(cd.getId() + "       " + cd.getStud_id());
+        }
     }
 
     Random r = new Random();
