@@ -4,11 +4,6 @@
  * and open the template in the editor.
  */
 package evenOddNo;
-
-/**
- *
- * @author Md mohsin alam
- */
 import java.util.Scanner;
 public class EvenOddNo {
     // even and odd no program

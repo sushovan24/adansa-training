@@ -3,7 +3,7 @@ package randomGenerateNo;
 import java.util.Scanner;
 public class ReverseString {
     
-    public static void main(String[] args) {
+    public static void reverse(){
 		String s="java html css";
 		String result="";
 		String[] ar=s.split(" ");

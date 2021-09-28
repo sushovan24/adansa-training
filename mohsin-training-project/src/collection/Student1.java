@@ -1,86 +1,41 @@
-
-
 //Class:: Student [int id, String name];
 //Insert different value in this class.
 //add different value in List<Student>.
 //Print this value...
+package collection;
 
-        package collection;
-	import java.util.*;
-	import java.util.ArrayList;
-	import java.util.List;
-	import java.util.Scanner;
-	public class Student1 {
-	    private int id;
-	    private String name;
-	    private String course;
-            
-            public void studentDisplay()
-            {
+import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
-	    public int getId() {
-	        return id;
-	    }
+public class Student1 {
 
-	    public void setId(int id) {
-	        this.id = id;
-	    }
+    private int id;
+    private String name;
+    private String course;
 
-	    public String getName() {
-	        return name;
-	    }
+    public int getId() {
+        return id;
+    }
 
-	    public void setName(String name) {
-	        this.name = name;
-	    }
-	    
-	    public String getCourse()
-	    {
-	        return course;
-	    }
-	    public void setCourse(String course)
-	    {
-	        this.course =course;
-	    }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	    @Override
-		public String toString() {
-			return "Student [id=" + id + ", name=" + name + ", course=" + course + "]";
-		}    
-                
-	    //
-	        List<Student1> list = new ArrayList<>();
-//	      
-	        int i;
+    public String getName() {
+        return name;
+    }
 
-	        Student1 s = new Student1();
-	        s.setId(101);
-	        s.setName("ram");
-	        s.setCourse("java");
-	        list.add(s);
-	        System.out.println(list);
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	        Student1 s1 = new Student1();
-	        s1.setId(102);
-	        s1.setName("Dinga");
-	        s1.setCourse("adndroid");
-	        list.add(s1);
-	        System.out.println(list);
+    public String getCourse() {
+        return course;
+    }
 
-	        Student1 s3 = new Student1();
-	        s3.setId(15);
-	        s3.setName("dingi");
-	        s3.setCourse("springboot");
-	        list.add(s3);
-	        System.out.println(list);
-	        System.out.println(list.size());
-	        System.out.println("  ");
-
-	    }
-      }
-        
-	    
-
-	
-
-
+    public void setCourse(String course) {
+        this.course = course;
+    }
+}
