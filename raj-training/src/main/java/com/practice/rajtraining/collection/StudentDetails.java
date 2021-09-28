@@ -1,6 +1,4 @@
-
 package com.practice.rajtraining.collection;
-
 
 public class StudentDetails {
 
@@ -33,5 +31,45 @@ public class StudentDetails {
         this.mobile = mobile;
     }
 
-    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        // type casting of the argument.
+        StudentDetails other = (StudentDetails) obj;
+
+        // comparing the state of argument with
+        // the state of 'this' Object
+        if (stud_id != other.stud_id) {
+            return false;
+        }
+        if (mobile == null) {
+            if (other.mobile != null) {
+                return false;
+            }
+        } else if (!mobile.equals(other.mobile)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + stud_id;
+        result = prime * result
+                + ((mobile == null) ? 0 : mobile.hashCode());
+        return result;
+
+    }
+
 }
