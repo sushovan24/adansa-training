@@ -2,6 +2,7 @@
 //Insert different value in this class.
 //add different value in List<Student>.
 //Print this value...
+//done you need to work and update on github by comman line ok
 package collection;
 
 import java.util.*;
