@@ -3,6 +3,7 @@ package com.practice.rajtraining.collection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
@@ -30,6 +31,16 @@ public class StudentHelp {
         m1.setSubject("MTH");
         m1.setMarks(75);
         list.add(m1);
+        
+        /**Student details
+         *  1. HashMap<Integer, List<StdentDetails>>
+         *  2. Get from HM by StdentID 
+         * ``if contains then 
+         *      fetch list > check unique mobile number > if !unique then add it to list > put list to HM
+         *  3. if !conatins then
+         *      create a new list > add to list > put list to HM    
+         */
+        
 
         m1 = new Mixture();
         m1.setStud_id(100);
@@ -37,6 +48,15 @@ public class StudentHelp {
         m1.setMobile("9852362500");
         m1.setSubject("PHY");
         m1.setMarks(45);
+        list.add(m1);
+        
+        
+        m1 = new Mixture();
+        m1.setStud_id(100);
+        m1.setStud_name("rajkumar");
+        m1.setMobile("9852362500");
+        m1.setSubject("CHEM");
+        m1.setMarks(40);
         list.add(m1);
 
         m1 = new Mixture();
@@ -130,7 +150,7 @@ public class StudentHelp {
         m1 = new Mixture();
         m1.setStud_id(109);
         m1.setStud_name("monu");
-        m1.setMobile("8532145658");
+        m1.setMobile("8532145653");
         m1.setSubject("SSB");
         m1.setMarks(75);
         list.add(m1);
@@ -141,12 +161,14 @@ public class StudentHelp {
     public void display(ArrayList<Mixture> list) {
         ArrayList<Student> studentList = new ArrayList<>();
         ArrayList<Marks> marksList = new ArrayList<>();
-        ArrayList<StudentDetails> sdList = new ArrayList<>();
+        List<StudentDetails> sdList = new ArrayList<>();
         ArrayList<ClassDetails> cdList = new ArrayList<>();
+        
+        HashMap<Integer, List<StudentDetails>> stdDetMap = new HashMap<>();
         for (Mixture m : list) {
             stud_id = m.getStud_id();
             stud_name = m.getStud_name();
-            mobile = m.getMobile();
+            String mobile = m.getMobile();
             subject = m.getSubject();
             marks = m.getMarks();
 
@@ -162,12 +184,42 @@ public class StudentHelp {
             mark.setMarks(marks);
             mark.setSubject(subject);
             marksList.add(mark);
-
+            
             sd = new StudentDetails();
             setStudentDetailsId();
             sd.setStud_id(stud_id);
             sd.setMobile(mobile);
-            sdList.add(sd);
+            
+            if(stdDetMap.containsKey(stud_id)){
+                sdList = stdDetMap.get(stud_id);
+                boolean flag = true;
+                for (int j = 0; j < sdList.size(); j++) {
+                    System.out.println("Stud Id==>"+stud_id+"  existMob=>"+mobile+"  MobList=>"+sdList); 
+                   if(mobile.equals(sdList.get(j).getMobile())){
+                       System.out.println("Mobile Matched"); 
+                      flag = false; 
+                      break; 
+                   } 
+                    
+                }
+                
+                System.out.println("Flag==>"+flag);
+                if(flag){
+                    sdList.add(sd);
+                    stdDetMap.put(stud_id, sdList);
+                }
+                
+            }else{
+                System.out.println("When New Student");
+                sdList = new ArrayList<>();
+                sdList.add(sd);
+                stdDetMap.put(stud_id, sdList);
+            }
+            
+            
+            
+            
+//            sdList.add(sd);
 
             cd = new ClassDetails();
             setClassDetailsId();
@@ -175,11 +227,13 @@ public class StudentHelp {
             cdList.add(cd);
 
         }
+        
+        System.out.println("stdDetMap===>"+stdDetMap);
 
-        printStudent(studentList);
-        printMarks(marksList);
-        printStudentDetails(sdList);
-        printClassDetails(cdList);
+//        printStudent(studentList);
+//        printMarks(marksList);
+//        printStudentDetails(sdList);
+//        printClassDetails(cdList);
 
     }
 
@@ -204,7 +258,7 @@ public class StudentHelp {
 
     }
 
-    public void printMarks(ArrayList<Marks> list) {
+    public void printMarks(List<Marks> list) {
         System.out.println("marks............");
         System.out.println("id     stud_id      subject       marks");
 
@@ -214,9 +268,13 @@ public class StudentHelp {
         }
     }
 
-    public void printStudentDetails(ArrayList<StudentDetails> list) {
+    public void printStudentDetails(List<StudentDetails> list) {
         System.out.println("studentdetails............");
         System.out.println("id  student_id  student_mobile");
+        
+        
+        
+        
 
         HashSet<StudentDetails> set = new HashSet<>(list);
         for (StudentDetails sdd : set) {
