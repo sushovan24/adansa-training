@@ -71,5 +71,13 @@ public class StudentDetails {
         return result;
 
     }
+    
+    
+    
+    
+    @Override
+    public String toString(){
+       return "StudentDetails[studennId="+stud_id+", Mobile="+mobile+" ]"; 
+    }
 
 }
