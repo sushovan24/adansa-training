@@ -1,12 +1,10 @@
-
 package com.practice.rajtraining.collection;
-
 
 public class Mixture {
     //Class Mixture[stud_id<int>, stud_name<String>, mobile<String>, subject<String>, marks<int>]
-    
-    private int stu_id;
-    private String stu_name;
+
+    private int stud_id;
+    private String stud_name;
     private String mobile;
     private String subject;
     private int marks;
@@ -50,6 +48,5 @@ public class Mixture {
     public void setMarks(int marks) {
         this.marks = marks;
     }
-    
-    
+
 }
