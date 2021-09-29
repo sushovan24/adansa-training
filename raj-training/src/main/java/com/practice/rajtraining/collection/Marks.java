@@ -92,4 +92,9 @@ public class Marks {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Marks{" + "id=" + id + ", stud_id=" + stud_id + ", subject=" + subject + ", marks=" + marks + ", remarks=" + remarks + '}';
+    }
+
 }

@@ -72,4 +72,9 @@ public class StudentDetails {
 
     }
 
+    @Override
+    public String toString() {
+        return "Studentdetails[stud_id" + stud_id + ", mobile" + mobile + "]";
+    }
+
 }

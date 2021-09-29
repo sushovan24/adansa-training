@@ -2,11 +2,9 @@ package com.practice.rajtraining.collection;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Random;
-import java.util.Set;
 
 public class StudentHelp {
 
@@ -24,6 +22,13 @@ public class StudentHelp {
     public void mixtureList() {
         ArrayList<Mixture> list = new ArrayList<>();
         Mixture m1 = new Mixture();
+        m1.setStud_id(100);
+        m1.setStud_name("rajkumar");
+        m1.setMobile("8298241734");
+        m1.setSubject("MTH");
+        m1.setMarks(75);
+        list.add(m1);
+
         m1.setStud_id(100);
         m1.setStud_name("rajkumar");
         m1.setMobile("8298241734");
@@ -144,6 +149,8 @@ public class StudentHelp {
         ArrayList<StudentDetails> sdList = new ArrayList<>();
         HashMap<Integer, Student> studentmap = new HashMap<>();
         HashMap<Integer, ClassDetails> classmap = new HashMap<>();
+        HashMap<Integer, ArrayList<StudentDetails>> stdmap = new HashMap<>();
+        HashMap<Integer, ArrayList<Marks>> markmap = new HashMap<>();
 
         for (Mixture m : list) {
             stud_id = m.getStud_id();
@@ -164,13 +171,47 @@ public class StudentHelp {
             mark.setStud_id(stud_id);
             mark.setMarks(marks);
             mark.setSubject(subject);
-            marksList.add(mark);
+            if (markmap.containsKey(stud_id)) {
+                marksList = markmap.get(stud_id);
+                boolean f = true;
+                for (int i = 0; i < marksList.size(); i++) {
+                    if (subject.equals(marksList.get(i).getSubject())) {
+                        f = false;
+                        break;
+                    }
+                }
+                if (f) {
+                    marksList.add(mark);
+                    markmap.put(stud_id, marksList);
+                }
+            } else {
+                marksList = new ArrayList<>();
+                marksList.add(mark);
+                markmap.put(stud_id, marksList);
+            }
 
             sd = new StudentDetails();
             setStudentDetailsId();
             sd.setStud_id(stud_id);
             sd.setMobile(mobile);
-            sdList.add(sd);
+            if (stdmap.containsKey(stud_id)) {
+                sdList = stdmap.get(stud_id);
+                boolean f = true;
+                for (int j = 0; j < sdList.size(); j++) {
+                    if (mobile.equals(sdList.get(j).getMobile())) {
+                        f = false;
+                        break;
+                    }
+                }
+                if (f) {
+                    sdList.add(sd);
+                    stdmap.put(stud_id, sdList);
+                }
+            } else {
+                sdList = new ArrayList<>();
+                sdList.add(sd);
+                stdmap.put(stud_id, sdList);
+            }
 
             cd = new ClassDetails();
             if (!classmap.containsKey(stud_id)) {
@@ -182,10 +223,9 @@ public class StudentHelp {
         }
 
         printStudent(studentmap);
-        printMarks(marksList);
-        printStudentDetails(sdList);
+        printMarks(markmap);
+        printStudentDetails(stdmap);
         printClassDetails(classmap);
-
     }
 
     public void printStudent(HashMap<Integer, Student> map) {
@@ -198,21 +238,29 @@ public class StudentHelp {
 
     }
 
-    public void printMarks(ArrayList<Marks> list) {
+    public void printMarks(HashMap<Integer, ArrayList<Marks>> map) {
+        ArrayList<Marks> mList = new ArrayList<>();
         System.out.println("marks............");
         System.out.println("id     stud_id      subject       marks");
-        HashSet<Marks> set = new HashSet<>(list);
-        for (Marks mm : set) {
-            System.out.println(mm.getId() + "        " + mm.getStud_id() + "         " + mm.getSubject() + "         " + mm.getMarks());
+        Iterator itr = map.values().iterator();
+        while (itr.hasNext()) {
+            mList = (ArrayList<Marks>) itr.next();
+            for (Marks mm : mList) {
+                System.out.println(mm.getId() + "       " + mm.getStud_id() + "         " + mm.getSubject() + "         " + mm.getMarks());
+            }
         }
     }
 
-    public void printStudentDetails(ArrayList<StudentDetails> list) {
+    public void printStudentDetails(HashMap<Integer, ArrayList<StudentDetails>> map) {
+        ArrayList<StudentDetails> sdList = new ArrayList<>();
         System.out.println("studentdetails............");
         System.out.println("id  student_id  student_mobile");
-        HashSet<StudentDetails> set = new HashSet<>(list);
-        for (StudentDetails sdd : set) {
-            System.out.println(sdd.getId() + "    " + sdd.getStud_id() + "    " + sdd.getMobile());
+        Iterator itr = map.values().iterator();
+        while (itr.hasNext()) {
+            sdList = (ArrayList<StudentDetails>) itr.next();
+            for (StudentDetails std : sdList) {
+                System.out.println(std.getId() + "    " + std.getStud_id() + "    " + std.getMobile());
+            }
         }
     }
 
