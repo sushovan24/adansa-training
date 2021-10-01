@@ -23,5 +23,7 @@
             TestRemoteStatefulBeanRemote sremote= (TestRemoteStatefulBeanRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/TestRemoteStatefulBean!com.rajtraining.ejb.bl.TestRemoteStatefulBean");
             sremote.printStatelessMsg("this is statefull session bean");
         %>
+        
+        <a href="bank.jsp">Open Account</a>  
     </body>
 </html>

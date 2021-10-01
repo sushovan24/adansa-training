@@ -5,6 +5,7 @@ import com.rajtraining.ejb.da.TestLocalStatefulBeanLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.ejb.LocalBean;
+import javax.ejb.Singleton;
 
 
 @Stateful
