@@ -1,5 +1,8 @@
 package com.trans.never.bl;
 
+import javax.ejb.Remote;
+
+@Remote
 public interface NeverRemoteRemote {
 
     void print(String msg);
