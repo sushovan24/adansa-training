@@ -14,6 +14,6 @@ import javax.ejb.Local;
 @Local
 public interface TestLocalLocal {
 
-    public void printTest(String msg);
+    public void printTest(String msg) throws Exception;
     
 }

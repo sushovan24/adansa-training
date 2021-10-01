@@ -17,8 +17,13 @@ public class TestLocal implements TestLocalLocal {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     int i=0;
-    public void printTest(String msg){
+    @Override
+    public void printTest(String msg) throws Exception{
         i++;
-        System.out.println("Message["+i+"]=>"+msg);
+//        try{
+        System.out.println("Message["+i+"]=>"+msg.toLowerCase());
+//        }catch(Exception ex){
+//            System.out.println("[Local] Error in print message===>"+ex.toString()); 
+//        }
     }
 }

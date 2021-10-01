@@ -9,6 +9,7 @@ import com.training.ejb.da.TestLocalLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
+import javax.ejb.TransactionAttribute;
 
 /**
  *
@@ -21,8 +22,12 @@ public class TestRemote implements TestRemoteRemote {
     private TestLocalLocal local;
     
     public void testPrint(String msg){
+        try{
         System.out.println("Local Obj->"+local);
         local.printTest(msg);
+        }catch(Exception ex){
+            System.out.println("Remote Method==>"+ex.toString());
+        }
     }
 
 }
