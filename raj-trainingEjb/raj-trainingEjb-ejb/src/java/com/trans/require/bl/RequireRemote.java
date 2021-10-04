@@ -7,9 +7,11 @@ import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 
 @Stateless
-
+@TransactionManagement(TransactionManagementType.CONTAINER)
 public class RequireRemote implements RequireRemoteRemote {
 
     @EJB
