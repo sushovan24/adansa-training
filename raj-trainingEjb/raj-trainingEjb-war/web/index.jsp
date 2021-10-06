@@ -34,12 +34,12 @@
 //            rnremote.print("this is reuire new transaction");
 //            MandRemoteRemote mremote = (MandRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/MandRemote!com.trans.mand.bl.MandRemoteRemote");
 //            mremote.print("this is mandatory transaction");
-<<<<<<< HEAD
+
 //            NeverRemoteRemote nremote = (NeverRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/NeverRemote!com.trans.never.bl.NeverRemote");
 //            nremote.print("this is never transaction");
 //            nremote.printSupport("this is support transaction");
 //            nremote.printNotSupported("this is not supported transaction");
-=======
+
 //            NeverRemoteRemote nremote = (NeverRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/NeverRemote!com.trans.never.bl.NeverRemoteRemote");
 //            nremote.print("this is never transaction");
 //            nremote.printSupport("this is support transaction");
@@ -49,9 +49,9 @@
              Students student = new Students();
              student.setName("rajkumar");
              remote.createStudent(student);
->>>>>>> 66d2e5401e8ce6df34c9fd711c051954270cf758
+
         %>
 
-        <a href="bank.jsp">Open Account</a>  
+       
     </body>
 </html>

@@ -57,7 +57,7 @@ public class App {
  // sum of squre each digit 
            SumOfEachSqureNo soes = new SumOfEachSqureNo();
            soes.sumofsqureno();
-           
+        
   // RandomNoGenerate ye apka class name galat likhe ho check karo 
             RandomGenerate rand=new RandomGenerate();
            rand.randomGenerate();
