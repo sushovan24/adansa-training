@@ -34,10 +34,10 @@
 //            rnremote.print("this is reuire new transaction");
 //            MandRemoteRemote mremote = (MandRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/MandRemote!com.trans.mand.bl.MandRemote");
 //            mremote.print("this is mandatory transaction");
-            NeverRemoteRemote nremote = (NeverRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/NeverRemote!com.trans.never.bl.NeverRemote");
-            nremote.print("this is never transaction");
-            nremote.printSupport("this is support transaction");
-            nremote.printNotSupported("this is not supported transaction");
+//            NeverRemoteRemote nremote = (NeverRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/NeverRemote!com.trans.never.bl.NeverRemote");
+//            nremote.print("this is never transaction");
+//            nremote.printSupport("this is support transaction");
+//            nremote.printNotSupported("this is not supported transaction");
         %>
 
         <a href="bank.jsp">Open Account</a>  
