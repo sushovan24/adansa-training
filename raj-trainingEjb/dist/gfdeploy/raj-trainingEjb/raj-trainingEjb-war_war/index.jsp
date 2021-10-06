@@ -4,6 +4,7 @@
     Author     : PANDIT
 --%>
 
+<%@page import="com.entity.Students"%>
 <%@page import="com.trans.never.bl.NeverRemoteRemote"%>
 <%@page import="com.trans.mand.bl.MandRemoteRemote"%>
 <%@page import="com.trans.rn.bl.ReqNewRemoteRemote"%>
@@ -22,8 +23,7 @@
     <body>
         <h1>Hello World!</h1>
         <%
-//            TestRemoteRemote remote=(TestRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/TestRemote!com.rajtraining.ejb.bl.TestRemoteRemote");
-//            remote.print("hi");
+
 //            
 //            TestRemoteStatefulBeanRemote sremote= (TestRemoteStatefulBeanRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/TestRemoteStatefulBean!com.rajtraining.ejb.bl.TestRemoteStatefulBean");
 //            sremote.printStatelessMsg("this is statefull session bean");
@@ -34,10 +34,15 @@
 //            rnremote.print("this is reuire new transaction");
 //            MandRemoteRemote mremote = (MandRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/MandRemote!com.trans.mand.bl.MandRemoteRemote");
 //            mremote.print("this is mandatory transaction");
-            NeverRemoteRemote nremote = (NeverRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/NeverRemote!com.trans.never.bl.NeverRemoteRemote");
-            nremote.print("this is never transaction");
-            nremote.printSupport("this is support transaction");
-            nremote.printNotSupported("this is not supported transaction");
+//            NeverRemoteRemote nremote = (NeverRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/NeverRemote!com.trans.never.bl.NeverRemoteRemote");
+//            nremote.print("this is never transaction");
+//            nremote.printSupport("this is support transaction");
+//            nremote.printNotSupported("this is not supported transaction");
+
+            TestRemoteRemote remote = (TestRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/TestRemote!com.rajtraining.ejb.bl.TestRemoteRemote");
+             Students student = new Students();
+             student.setName("rajkumar");
+             remote.createStudent(student);
         %>
 
         <a href="bank.jsp">Open Account</a>  
