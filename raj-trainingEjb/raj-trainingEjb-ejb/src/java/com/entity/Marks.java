@@ -20,16 +20,28 @@ import javax.validation.constraints.Size;
 
 /**
  *
+<<<<<<< HEAD
  * @author Md mohsin alam
+=======
+ * @author PANDIT
+>>>>>>> 66d2e5401e8ce6df34c9fd711c051954270cf758
  */
 @Entity
 @Table(name = "marks", catalog = "training", schema = "")
 @NamedQueries({
+<<<<<<< HEAD
     @NamedQuery(name = "Marks.findAll", query = "SELECT m FROM Marks m")
     , @NamedQuery(name = "Marks.findById", query = "SELECT m FROM Marks m WHERE m.id = :id")
     , @NamedQuery(name = "Marks.findByStudId", query = "SELECT m FROM Marks m WHERE m.studId = :studId")
     , @NamedQuery(name = "Marks.findBySubject", query = "SELECT m FROM Marks m WHERE m.subject = :subject")
     , @NamedQuery(name = "Marks.findByMark", query = "SELECT m FROM Marks m WHERE m.mark = :mark")})
+=======
+    @NamedQuery(name = "Marks.findAll", query = "SELECT m FROM Marks m"),
+    @NamedQuery(name = "Marks.findById", query = "SELECT m FROM Marks m WHERE m.id = :id"),
+    @NamedQuery(name = "Marks.findByStudId", query = "SELECT m FROM Marks m WHERE m.studId = :studId"),
+    @NamedQuery(name = "Marks.findBySubject", query = "SELECT m FROM Marks m WHERE m.subject = :subject"),
+    @NamedQuery(name = "Marks.findByMark", query = "SELECT m FROM Marks m WHERE m.mark = :mark")})
+>>>>>>> 66d2e5401e8ce6df34c9fd711c051954270cf758
 public class Marks implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,12 +51,21 @@ public class Marks implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
+<<<<<<< HEAD
     @NotNull
     @Column(name = "stud_id")
     private int studId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
+=======
+    //@NotNull
+    @Column(name = "stud_id")
+    private int studId;
+    @Basic(optional = false)
+    //@NotNull
+   // @Size(min = 1, max = 45)
+>>>>>>> 66d2e5401e8ce6df34c9fd711c051954270cf758
     @Column(name = "subject")
     private String subject;
     @Column(name = "mark")

@@ -1,5 +1,6 @@
 package com.rajtraining.ejb.bl;
 
+import com.entity.Students;
 import com.rajtraining.ejb.da.TestLocalLocal;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -21,6 +22,11 @@ public class TestRemote implements TestRemoteRemote {
             System.out.println("Exception " + ex);
         }
 
+    }
+
+    @Override
+    public void createStudent(Students student) {
+        local.createStudent(student);
     }
 
 }
