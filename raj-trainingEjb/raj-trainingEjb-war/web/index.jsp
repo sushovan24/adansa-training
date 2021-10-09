@@ -28,6 +28,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+
         <%
 
 //            
@@ -52,10 +53,28 @@
 //            nremote.printNotSupported("this is not supported transaction");
 
             TestRemoteRemote remote = (TestRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/TestRemote!com.rajtraining.ejb.bl.TestRemoteRemote");
-             Students student = new Students();
-             student.setName("nausad");
-             remote.createStudent(student);
-
+//             Students student = new Students();
+//             student.setName("sanjay");
+//             
+//             StudentDetails std = new StudentDetails();
+//             List<StudentDetails> sdList = new ArrayList<StudentDetails>();
+//             std.setMobile("9632587412");
+//             std.setStudentId(student);
+//             sdList.add(std);
+//             
+//             Marks mark = new Marks();
+//             List<Marks> markList = new ArrayList<Marks>();
+//             mark.setSubject("ENG");
+//             mark.setMark(25);
+//             mark.setStudId(student);
+//             markList.add(mark);
+//             
+//             student.setSdList(sdList);
+//             student.setmList(markList);
+//             remote.createStudent(student);
+             
+             
+             //remote.findCascadeStudentsById(31);
 //          StudentDetails sd=new StudentDetails();
 //          sd.setStudentId(110);
 //          sd.setMobile("9632145678");
@@ -160,6 +179,7 @@
 //                remote.findStudentsByNamedata("tipu");
                     
                    //remote.findStudentsDataOrderbyNameAsc();
+                   //remote.deleteBlankName();
         %>
 
 

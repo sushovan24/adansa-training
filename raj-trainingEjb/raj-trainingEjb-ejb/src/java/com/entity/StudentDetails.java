@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -26,7 +28,7 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "StudentDetails.findAll", query = "SELECT s FROM StudentDetails s")
     , @NamedQuery(name = "StudentDetails.findById", query = "SELECT s FROM StudentDetails s WHERE s.id = :id")
-    , @NamedQuery(name = "StudentDetails.findByStudentId", query = "SELECT s FROM StudentDetails s WHERE s.studentId = :studentId")
+    , @NamedQuery(name = "StudentDetails.findByStudentId", query = "SELECT s FROM StudentDetails s WHERE s.studentId.id = :studentId")
     , @NamedQuery(name = "StudentDetails.findByMobile", query = "SELECT s FROM StudentDetails s WHERE s.mobile = :mobile")})
 public class StudentDetails implements Serializable {
 
@@ -36,8 +38,11 @@ public class StudentDetails implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "student_id")
-    private Integer studentId;
+    
+    @JoinColumn(name = "student_id")
+    @ManyToOne
+    private Students studentId;
+    
     @Size(max = 45)
     @Column(name = "mobile")
     private String mobile;
@@ -57,11 +62,11 @@ public class StudentDetails implements Serializable {
         this.id = id;
     }
 
-    public Integer getStudentId() {
+    public Students getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(Integer studentId) {
+    public void setStudentId(Students studentId) {
         this.studentId = studentId;
     }
 

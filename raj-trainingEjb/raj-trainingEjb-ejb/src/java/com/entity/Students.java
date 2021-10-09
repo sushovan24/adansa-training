@@ -6,14 +6,18 @@
 package com.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -34,9 +38,31 @@ public class Students implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    
+
     @Column(name = "student_name")
     private String studentName;
+
+    @OneToMany(mappedBy = "studentId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<StudentDetails> sdList;
+
+    public List<StudentDetails> getSdList() {
+        return sdList;
+    }
+
+    public void setSdList(List<StudentDetails> sdList) {
+        this.sdList = sdList;
+    }
+
+    @OneToMany(mappedBy = "studId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Marks> mList;
+
+    public List<Marks> getmList() {
+        return mList;
+    }
+
+    public void setmList(List<Marks> mList) {
+        this.mList = mList;
+    }
 
     public Students() {
     }
@@ -85,5 +111,5 @@ public class Students implements Serializable {
     public String toString() {
         return "com.entity.Students[ id=" + id + " ]";
     }
-    
+
 }
