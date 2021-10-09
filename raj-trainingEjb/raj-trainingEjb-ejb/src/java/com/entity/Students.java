@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.entity;
 
 import java.io.Serializable;
@@ -26,7 +22,7 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "Students.findAll", query = "SELECT s FROM Students s")
     , @NamedQuery(name = "Students.findById", query = "SELECT s FROM Students s WHERE s.id = :id")
-    , @NamedQuery(name = "Students.findByName", query = "SELECT s FROM Students s WHERE s.name = :name")})
+    , @NamedQuery(name = "Students.findByName", query = "SELECT s FROM Students s WHERE s.studentName = :studentName")})
 public class Students implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,8 +32,8 @@ public class Students implements Serializable {
     @Column(name = "id")
     private Integer id;
     
-    @Column(name = "name")
-    private String name;
+    @Column(name = "student_name")
+    private String studentName;
 
     public Students() {
     }
@@ -55,11 +51,11 @@ public class Students implements Serializable {
     }
 
     public String getName() {
-        return name;
+        return studentName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String studentName) {
+        this.studentName = studentName;
     }
 
     @Override

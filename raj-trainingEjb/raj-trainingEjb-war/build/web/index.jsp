@@ -4,6 +4,7 @@
     Author     : PANDIT
 --%>
 
+<%@page import="com.mohsin.ejb.bl.TestMohsinRemoteRemote"%>
 <%@page import="com.entity.Students"%>
 <%@page import="com.trans.never.bl.NeverRemoteRemote"%>
 <%@page import="com.trans.mand.bl.MandRemoteRemote"%>
@@ -27,31 +28,45 @@
 //            
 //            TestRemoteStatefulBeanRemote sremote= (TestRemoteStatefulBeanRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/TestRemoteStatefulBean!com.rajtraining.ejb.bl.TestRemoteStatefulBean");
 //            sremote.printStatelessMsg("this is statefull session bean");
-
 //            RequireRemoteRemote rremote = (RequireRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/RequireRemote!com.trans.require.bl.RequireRemoteRemote");
 //            rremote.print("this is the require transactions");
 //            ReqNewRemoteRemote rnremote = (ReqNewRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/ReqNewRemote!com.trans.rn.bl.ReqNewRemoteRemote");
 //            rnremote.print("this is reuire new transaction");
 //            MandRemoteRemote mremote = (MandRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/MandRemote!com.trans.mand.bl.MandRemoteRemote");
 //            mremote.print("this is mandatory transaction");
-
 //            NeverRemoteRemote nremote = (NeverRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/NeverRemote!com.trans.never.bl.NeverRemote");
 //            nremote.print("this is never transaction");
 //            nremote.printSupport("this is support transaction");
 //            nremote.printNotSupported("this is not supported transaction");
-
 //            NeverRemoteRemote nremote = (NeverRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/NeverRemote!com.trans.never.bl.NeverRemoteRemote");
 //            nremote.print("this is never transaction");
 //            nremote.printSupport("this is support transaction");
 //            nremote.printNotSupported("this is not supported transaction");
+//            TestRemoteRemote remote = (TestRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/TestRemote!com.rajtraining.ejb.bl.TestRemoteRemote");
+//             Students student = new Students();
+//             student.setName("rajkumar");
+//             remote.createStudent(student);
+            TestMohsinRemoteRemote remote = (TestMohsinRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/TestMohsinRemote!com.mohsin.ejb.bl.TestMohsinRemoteRemote");
+            //Students student = new Students();//
+            //student.setName("muskan");
+            //remote.addStudents(student);
 
-            TestRemoteRemote remote = (TestRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/TestRemote!com.rajtraining.ejb.bl.TestRemoteRemote");
-             Students student = new Students();
-             student.setName("rajkumar");
-             remote.createStudent(student);
+            remote.printMsg("hi");
 
+            Students st = new Students();
+            st.setName("mohan");
+            remote.cretateStudent(st);
+            st.setName("manoj");
+            remote.cretateStudent(st);
+             st.setName("mohsin");
+            remote.cretateStudent(st);
+             st.setName("rawan");
+            remote.cretateStudent(st);
+             st.setName("azad");
+            remote.cretateStudent(st);
         %>
 
-       
+
+
     </body>
 </html>
