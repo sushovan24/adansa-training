@@ -6,6 +6,7 @@
 
 <%@page import="com.mohsin.ejb.bl.TestMohsinRemoteRemote"%>
 <%@page import="com.entity.Students"%>
+<%@page import="com.entity.StudentDetails"%>
 <%@page import="com.trans.never.bl.NeverRemoteRemote"%>
 <%@page import="com.trans.mand.bl.MandRemoteRemote"%>
 <%@page import="com.trans.rn.bl.ReqNewRemoteRemote"%>
