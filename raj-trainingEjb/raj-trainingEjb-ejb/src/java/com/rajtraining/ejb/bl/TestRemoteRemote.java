@@ -4,7 +4,6 @@ import com.entity.Marks;
 import com.entity.Mixture;
 import com.entity.StudentDetails;
 import com.entity.Students;
-import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Remote;
 
@@ -27,12 +26,27 @@ public interface TestRemoteRemote {
     void findStudents(int id);
 
     List<Students> fetchStudents();
+
     void findAllStudents();
+
     void findAllStudentsData();
+
     void findStudentsById(int id);
+
     void findStudentsByName(String name);
+
     void findStudentsByIddata(int id);
+
     void findStudentsByNamedata(String name);
+
     void findStudentsDataOrderbyNameAsc();
+
     void insertedByNameAsc();
+
+    void findCascadeStudentsById(int id);
+
+    void deleteBlankName();
+
+    void printmsg(String msg, String name);
+
 }

@@ -54,18 +54,18 @@
 
             TestRemoteRemote remote = (TestRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/TestRemote!com.rajtraining.ejb.bl.TestRemoteRemote");
 //             Students student = new Students();
-//             student.setName("sanjay");
+//             student.setName("keshaw");
 //             
 //             StudentDetails std = new StudentDetails();
 //             List<StudentDetails> sdList = new ArrayList<StudentDetails>();
-//             std.setMobile("9632587412");
+//             std.setMobile("7410236587");
 //             std.setStudentId(student);
 //             sdList.add(std);
 //             
 //             Marks mark = new Marks();
 //             List<Marks> markList = new ArrayList<Marks>();
-//             mark.setSubject("ENG");
-//             mark.setMark(25);
+//             mark.setSubject("COA");
+//             mark.setMark(45);
 //             mark.setStudId(student);
 //             markList.add(mark);
 //             
@@ -86,9 +86,8 @@
 //            m.setMark(25);
 //            remote.saveMarks(m);
 //
-//            List<Mixture> list=new ArrayList<>();
+//            List<Mixture> list=new ArrayList<Mixture>();
 //            Mixture m=new Mixture();
-//            m.setStudId(101);
 //            m.setSubject("PHY");
 //            m.setMobile("7462088722");
 //            m.setMark(78);
@@ -96,15 +95,15 @@
 //            list.add(m);
 //            
 //            m=new Mixture();
-//            m.setStudId(102);
 //            m.setSubject("che");
 //            m.setMobile("7462088222");
 //            m.setMark(74);
 //            m.setStudName("deepak");
 //            list.add(m);
 //            
+//            remote.getMixture(list);
+//            
 //            m=new Mixture();
-//            m.setStudId(103);
 //            m.setSubject("che");
 //            m.setMobile("8862088222");
 //            m.setMark(74);
@@ -112,7 +111,6 @@
 //            list.add(m);
 //            
 //            m=new Mixture();
-//            m.setStudId(103);
 //            m.setSubject("che");
 //            m.setMobile("8523697412");
 //            m.setMark(74);
@@ -120,7 +118,6 @@
 //            list.add(m);
 //            
 //            m=new Mixture();
-//            m.setStudId(104);
 //            m.setSubject("che");
 //            m.setMobile("8965236584");
 //            m.setMark(65);
@@ -128,7 +125,6 @@
 //            list.add(m);
 //            
 //            m=new Mixture();
-//            m.setStudId(104);
 //            m.setSubject("che");
 //            m.setMobile("8965236584");
 //            m.setMark(65);
@@ -136,7 +132,6 @@
 //            list.add(m);
 //            
 //            m=new Mixture();
-//            m.setStudId(105);
 //            m.setSubject("che");
 //            m.setMobile("8862088222");
 //            m.setMark(74);
@@ -144,7 +139,6 @@
 //            list.add(m);
 //            
 //            m=new Mixture();
-//            m.setStudId(105);
 //            m.setSubject("phy");
 //            m.setMobile("8862088222");
 //            m.setMark(58);
@@ -152,13 +146,13 @@
 //            list.add(m);
 //            
 //            m=new Mixture();
-//            m.setStudId(105);
 //            m.setSubject("mth");
 //            m.setMobile("8862088222");
 //            m.setMark(90);
 //            m.setStudName("deepak kumar");
 //            list.add(m);
-
+//            
+//            remote.getMixture(list);
             
 //              remote.findMarksDetails(1);
 //              remote.findMarksDetails(2);
@@ -166,7 +160,7 @@
 //              remote.findMarksDetails(4);
               
               
-//              remote.findStudents(4);
+//              remote.findStudents(37);
 
 //                remote.findAllStudents();
 //                   remote.findAllStudentsData();
@@ -180,6 +174,8 @@
                     
                    //remote.findStudentsDataOrderbyNameAsc();
                    //remote.deleteBlankName();
+                   
+                 remote.printmsg("name","RajKumar");
         %>
 
 

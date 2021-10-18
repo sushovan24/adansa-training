@@ -3,19 +3,19 @@ package com.entity;
 
 
 public class Mixture {
-    private int studId;
+    //private int studId;
     private String studName;
     private String mobile;
     private String subject;
     private int mark;
 
-    public int getStudId() {
-        return studId;
-    }
-
-    public void setStudId(int studId) {
-        this.studId = studId;
-    }
+//    public int getStudId() {
+//        return studId;
+//    }
+//
+//    public void setStudId(int studId) {
+//        this.studId = studId;
+//    }
 
     public String getStudName() {
         return studName;

@@ -5,7 +5,6 @@ import com.entity.Mixture;
 import com.entity.StudentDetails;
 import com.entity.Students;
 import java.util.List;
-import java.util.Objects;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,8 +31,7 @@ public class TestLocal implements TestLocalLocal {
         em.persist(student);
         em.flush();
         System.out.println(student.getId());
-//        Students sd = em.merge(student);
-//        System.out.println(sd);
+
     }
 
     @Override
@@ -55,7 +53,7 @@ public class TestLocal implements TestLocalLocal {
 
     @Override
     public void getMixture(List<Mixture> mix) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
 //    public void getMarksDetails(int id){
@@ -83,13 +81,23 @@ public class TestLocal implements TestLocalLocal {
 
     @Override
     public void findStudents(int id) {
-        Students s = em.find(Students.class, id);
-        System.out.println(s.getId() + "  " + s.getName());
-        em.detach(s);
-        s.setName("raju");
-        em.merge(s);
-        System.out.println("after merge");
-        System.out.println(s.getId() + "  " + s.getName());
+
+        try {
+            Students s = em.find(Students.class, id);
+            // em.refresh(s);
+            System.out.println(s.getId() + "  " + s.getName());
+            if (em.contains(s)) {
+                em.detach(s);
+                s.setName("raju");
+                em.merge(s);
+                System.out.println("after merge");
+                System.out.println(s.getId() + "  " + s.getName());
+            }
+        } catch (Exception e) {
+            System.out.println("object doesn't exist");
+            System.out.println(e);
+        }
+
     }
 
 //named query find all in student table 
@@ -194,9 +202,27 @@ public class TestLocal implements TestLocalLocal {
     public void insertedByNameAsc() {
         List<Object[]> list = fetchDataAsc();
         List<Object[]> data = fetchStudentsdata();
-        for(int i=0; i<data.size(); i++){
-           
+        for (int i = 0; i < data.size(); i++) {
+
         }
     }
 
+    @Override
+    public void deleteBlankName() {
+        Query q = em.createNativeQuery("select * from students where student_name=' '");
+        List<Object[]> data = q.getResultList();
+        for (Object[] o : data) {
+            System.out.println(o[0].toString() + " " + o[1].toString());
+        }
+    }
+
+    @Override
+    public void findCascadeStudentsById(int id) {
+        Students st = em.find(Students.class, id);
+        System.out.println("students: " + st.getId() + " " + st.getName());
+        List<StudentDetails> std = st.getSdList();
+        for (StudentDetails sd : std) {
+            System.out.println("studentdetails: " + sd.getId() + " " + sd.getMobile() + "  " + sd.getStudentId());
+        }
+    }
 }
