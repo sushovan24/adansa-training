@@ -12,11 +12,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  *
@@ -27,7 +27,7 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "Marks.findAll", query = "SELECT m FROM Marks m"),
     @NamedQuery(name = "Marks.findById", query = "SELECT m FROM Marks m WHERE m.id = :id"),
-    @NamedQuery(name = "Marks.findByStudId", query = "SELECT m FROM Marks m WHERE m.studId = :studId"),
+    @NamedQuery(name = "Marks.findByStudId", query = "SELECT m FROM Marks m WHERE m.studId.id = :studId"),
     @NamedQuery(name = "Marks.findBySubject", query = "SELECT m FROM Marks m WHERE m.subject = :subject"),
     @NamedQuery(name = "Marks.findByMark", query = "SELECT m FROM Marks m WHERE m.mark = :mark")})
 public class Marks implements Serializable {
@@ -38,10 +38,14 @@ public class Marks implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
+    
+    
+    //@Basic(optional = false)
     //@NotNull
-    @Column(name = "stud_id")
-    private int studId;
+    @JoinColumn(name = "stud_id")
+    @ManyToOne
+    private Students studId;
+    
     @Basic(optional = false)
     //@NotNull
    // @Size(min = 1, max = 45)
@@ -57,7 +61,7 @@ public class Marks implements Serializable {
         this.id = id;
     }
 
-    public Marks(Integer id, int studId, String subject) {
+    public Marks(Integer id, Students studId, String subject) {
         this.id = id;
         this.studId = studId;
         this.subject = subject;
@@ -71,11 +75,11 @@ public class Marks implements Serializable {
         this.id = id;
     }
 
-    public int getStudId() {
+    public Students getStudId() {
         return studId;
     }
 
-    public void setStudId(int studId) {
+    public void setStudId(Students studId) {
         this.studId = studId;
     }
 
@@ -119,5 +123,6 @@ public class Marks implements Serializable {
     public String toString() {
         return "com.entity.Marks[ id=" + id + " ]";
     }
+    
     
 }

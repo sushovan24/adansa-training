@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="raj-trainingEjb-ejbPU" transaction-type="JTA">
+<<<<<<< HEAD
     <jta-data-source>traing_test</jta-data-source>
+=======
+<<<<<<< HEAD
+    <jta-data-source>java:comp/DefaultDataSource</jta-data-source>
+=======
+    <jta-data-source>java:module/traing_test</jta-data-source>
+>>>>>>> 5a235551282d8b5da02ed92f0f2fd4b56021798c
+>>>>>>> 9b4934b4f0b5a1f63af97c6cf0fa7d162faa3631
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>
