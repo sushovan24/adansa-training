@@ -21,4 +21,13 @@ public class TestRemote implements TestRemoteRemote{
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public void add(int a, int b) {
+        local.add(a, b);
+        
+    }
 }
+
+
+

@@ -18,6 +18,7 @@
         <%
             TestRemoteRemote remote = ( TestRemoteRemote)new InitialContext().lookup("java:global/mohsin-trainingEjb/mohsin-trainingEjb-ejb/TestRemote!com.ejb.bl.TestRemoteRemote");
             remote.printMessage("hi this is my first statless bean");
+            remote.add(55, 5);
         %>
     </body>
 </html>

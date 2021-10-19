@@ -15,5 +15,11 @@ public class TestLocal implements TestLocalLocal {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public void add(int a, int b) {
+        int k=a+b;
+        System.out.println(k);
+    }
     
 }

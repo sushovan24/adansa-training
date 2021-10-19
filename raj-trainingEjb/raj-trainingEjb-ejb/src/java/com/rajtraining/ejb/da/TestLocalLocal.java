@@ -5,7 +5,6 @@ import com.entity.Marks;
 import com.entity.Mixture;
 import com.entity.StudentDetails;
 import com.entity.Students;
-import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -31,4 +30,6 @@ public interface TestLocalLocal {
     
     void findStudentsDataOrderByNameAsc();
     void insertedByNameAsc();
+    void findCascadeStudentsById(int id);
+    void deleteBlankName();
 }
