@@ -187,8 +187,7 @@ public class TestRemote implements TestRemoteRemote {
 //            mp.send(message);
 
             HashMap map = new HashMap();
-            map.put("c", code);
-            map.put("n", name);
+            map.put(code, name);
             ObjectMessage objmsg = ts.createObjectMessage();
             objmsg.setObject(map);
             mp.send(objmsg);

@@ -5,6 +5,12 @@
 --%>
 
 <%@page import="com.entity.Students"%>
+<%@page import="com.entity.StudentDetails"%>
+<%@page import="com.entity.Marks"%>
+<%@page import="com.entity.Mixture"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.HashMap"%>
 <%@page import="com.trans.never.bl.NeverRemoteRemote"%>
 <%@page import="com.trans.mand.bl.MandRemoteRemote"%>
 <%@page import="com.trans.rn.bl.ReqNewRemoteRemote"%>
@@ -22,6 +28,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+
         <%
 
 //            
@@ -45,13 +52,133 @@
 //            nremote.printSupport("this is support transaction");
 //            nremote.printNotSupported("this is not supported transaction");
 
-            TestRemoteRemote remote = (TestRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/TestRemote!com.rajtraining.ejb.bl.TestRemoteRemote");
-             Students student = new Students();
-             student.setName("rajkumar");
-             remote.createStudent(student);
+            TestRemoteRemote remote = (TestRemoteRemote) new InitialContext().lookup("mytraining-jndi");
+            //java:global/raj-trainingEjb/raj-trainingEjb-ejb/TestRemote!com.rajtraining.ejb.bl.TestRemoteRemote
+//             Students student = new Students();
+//             student.setName("keshaw");
+//             
+//             StudentDetails std = new StudentDetails();
+//             List<StudentDetails> sdList = new ArrayList<StudentDetails>();
+//             std.setMobile("7410236587");
+//             std.setStudentId(student);
+//             sdList.add(std);
+//             
+//             Marks mark = new Marks();
+//             List<Marks> markList = new ArrayList<Marks>();
+//             mark.setSubject("COA");
+//             mark.setMark(45);
+//             mark.setStudId(student);
+//             markList.add(mark);
+//             
+//             student.setSdList(sdList);
+//             student.setmList(markList);
+//             remote.createStudent(student);
+             
+             
+             //remote.findCascadeStudentsById(31);
+//          StudentDetails sd=new StudentDetails();
+//          sd.setStudentId(110);
+//          sd.setMobile("9632145678");
+//          remote.saveStudentDetails(sd);
 
+//            Marks m=new Marks();
+//            m.setStudId(108);
+//            m.setSubject("gk");
+//            m.setMark(25);
+//            remote.saveMarks(m);
+//
+//            List<Mixture> list=new ArrayList<Mixture>();
+//            Mixture m=new Mixture();
+//            m.setSubject("PHY");
+//            m.setMobile("7462088722");
+//            m.setMark(78);
+//            m.setStudName("mohsin");
+//            list.add(m);
+//            
+//            m=new Mixture();
+//            m.setSubject("che");
+//            m.setMobile("7462088222");
+//            m.setMark(74);
+//            m.setStudName("deepak");
+//            list.add(m);
+//            
+//            remote.getMixture(list);
+//            
+//            m=new Mixture();
+//            m.setSubject("che");
+//            m.setMobile("8862088222");
+//            m.setMark(74);
+//            m.setStudName("deepak kumar");
+//            list.add(m);
+//            
+//            m=new Mixture();
+//            m.setSubject("che");
+//            m.setMobile("8523697412");
+//            m.setMark(74);
+//            m.setStudName("deepak kumar");
+//            list.add(m);
+//            
+//            m=new Mixture();
+//            m.setSubject("che");
+//            m.setMobile("8965236584");
+//            m.setMark(65);
+//            m.setStudName("sohan");
+//            list.add(m);
+//            
+//            m=new Mixture();
+//            m.setSubject("che");
+//            m.setMobile("8965236584");
+//            m.setMark(65);
+//            m.setStudName("sohan");
+//            list.add(m);
+//            
+//            m=new Mixture();
+//            m.setSubject("che");
+//            m.setMobile("8862088222");
+//            m.setMark(74);
+//            m.setStudName("deepak kumar");
+//            list.add(m);
+//            
+//            m=new Mixture();
+//            m.setSubject("phy");
+//            m.setMobile("8862088222");
+//            m.setMark(58);
+//            m.setStudName("deepak kumar");
+//            list.add(m);
+//            
+//            m=new Mixture();
+//            m.setSubject("mth");
+//            m.setMobile("8862088222");
+//            m.setMark(90);
+//            m.setStudName("deepak kumar");
+//            list.add(m);
+//            
+//            remote.getMixture(list);
+            
+//              remote.findMarksDetails(1);
+//              remote.findMarksDetails(2);
+//              remote.findMarksDetails(3);
+//              remote.findMarksDetails(4);
+              
+              
+//              remote.findStudents(37);
+
+//                remote.findAllStudents();
+//                   remote.findAllStudentsData();
+
+                //remote.findStudentsById(2);
+                
+                //remote.findStudentsByName("rajkumar");
+                
+//                remote.findStudentsByIddata(3);
+//                remote.findStudentsByNamedata("tipu");
+                    
+                   //remote.findStudentsDataOrderbyNameAsc();
+                   //remote.deleteBlankName();
+                   
+                 remote.printmsg("name","RajKumar");
         %>
 
-       
+
     </body>
 </html>

@@ -52,7 +52,8 @@
 //            nremote.printSupport("this is support transaction");
 //            nremote.printNotSupported("this is not supported transaction");
 
-            TestRemoteRemote remote = (TestRemoteRemote) new InitialContext().lookup("java:global/raj-trainingEjb/raj-trainingEjb-ejb/TestRemote!com.rajtraining.ejb.bl.TestRemoteRemote");
+            TestRemoteRemote remote = (TestRemoteRemote) new InitialContext().lookup("mytraining-jndi");
+            //java:global/raj-trainingEjb/raj-trainingEjb-ejb/TestRemote!com.rajtraining.ejb.bl.TestRemoteRemote
 //             Students student = new Students();
 //             student.setName("keshaw");
 //             
