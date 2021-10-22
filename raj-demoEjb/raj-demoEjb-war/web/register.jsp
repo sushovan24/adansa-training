@@ -35,7 +35,13 @@
                     <%
                         }
                         session.removeAttribute("regError");
-
+                        String passmsg = (String) session.getAttribute("passformat");
+                        if (passmsg != null) {
+                    %>
+                    <p class="text-danger"><%=passmsg%></p>
+                    <%
+                        }
+                        session.removeAttribute("passformat");
                     %>
                 </div>
                 <form name="form" action="RegisterServlet" method="post">

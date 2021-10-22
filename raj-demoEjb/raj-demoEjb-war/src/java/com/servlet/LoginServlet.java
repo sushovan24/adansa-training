@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.servlet;
 
 import com.google.common.base.Objects;
@@ -53,7 +48,8 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect("index.jsp");
                 }
             } else {
-                out.println("wrong formate");
+                session.setAttribute("passformat", "password should be one letter upper & lower case, one character and number with 8 digit long");
+                response.sendRedirect("index.jsp");
             }
         } catch (NamingException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);

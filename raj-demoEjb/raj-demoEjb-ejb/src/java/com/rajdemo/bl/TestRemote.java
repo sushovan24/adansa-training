@@ -69,4 +69,10 @@ public class TestRemote implements TestRemoteImpl {
         return local.getLoginData(name);
     }
 
+    @Override
+    public List<Students> findAllData() {
+        List<Students> data= local.findAllData();
+        return data;
+    }
+
 }

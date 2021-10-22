@@ -1,15 +1,9 @@
-<%-- 
-    Document   : home
-    Created on : Oct 21, 2021, 1:57:43 PM
-    Author     : PANDIT
---%>
-
 <%@page import="com.rajdemo.entity.Marks"%>
 <%@page import="com.rajdemo.entity.StudentDetails"%>
-<%@page import="java.util.List"%>
 <%@page import="com.rajdemo.entity.Students"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.util.List"%>
+<%@page import="com.rajdemo.bl.TestRemoteImpl"%>
+<%@page import="javax.naming.InitialContext"%>
 <!doctype html>
 <html lang="en">
     <head>
@@ -20,58 +14,53 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-        <title>Hello, world!</title>
+        <title>All user data page</title>
     </head>
     <body>
-
         <div class="row">
-            <div class="col-md-8 offset-2 mt-3">
-                <h1 class="text-center">User data</h1>
+            <div class="col-md-6 offset-3">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">studentId</th>
-                            <th scope="col">username</th>
+                            <th scope="col">UserId</th>
+                            <th scope="col">Username</th>
                             <th scope="col">mobile</th>
                             <th scope="col">subject</th>
-                            <th scope="col">marks</th>
+                            <th scope="col">mark</th>
                         </tr>
                     </thead>
                     <tbody>
                         <%
-                            Students obj = (Students) session.getAttribute("msg");
-                            if (obj != null) {
-                                List<StudentDetails> studentdata = obj.getSdList();
-                                List<Marks> studentmark = obj.getMarkList();
+                            TestRemoteImpl remote = (TestRemoteImpl) new InitialContext().lookup("project-jndi");
+                            List<Students> data = remote.findAllData();
+                            for (Students d : data) {
                         %>
                         <tr>
-                            <td><%=obj.getId()%></td>
-                            <td><%=obj.getStudentName()%></td>
+                            <th><%=d.getId()%></th>
+                            <td><%=d.getStudentName()%></td>
                             <%
-                                for (StudentDetails sd : studentdata) {
+                                List<StudentDetails> sd = d.getSdList();
+                                for (StudentDetails std : sd) {
+                            %>
+                            <td><%=std.getMobile()%></td>
+                            <%
+                                }
+                                List<Marks> m = d.getMarkList();
+                                for (Marks mark : m) {
                             %>
 
-                            <td><%=sd.getMobile()%></td>
-                            <%
-                                }
-                                for (Marks m : studentmark) {
-                            %>
-                            <td><%=m.getSubject()%></td>
-                            <td><%=m.getMark()%></td>
+                            <td><%=mark.getSubject()%></td>
+                            <td><%=mark.getMark()%></td>
                             <%
                                 }
                             %>
+
                         </tr>
                         <%
                             }
                         %>
+
                     </tbody>
-                    <div class="text-center">
-                        <a href="alluserdata.jsp" class="btn btn-success">AllUserData</a>
-                    </div>
-                    <%
-                        session.removeAttribute("msg");
-                    %>
                 </table>
             </div>
         </div>

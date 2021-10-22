@@ -30,7 +30,7 @@
                         session.removeAttribute("errorMsg");
                         String sucMsg = (String) session.getAttribute("regMsg");
                         if (sucMsg != null) {%>
-                    <h1><%=sucMsg%></h1>
+                    <h1 class="text-success"><%=sucMsg%></h1>
                     <%}
                         session.removeAttribute("regMsg");
                         String loginmsg = (String) session.getAttribute("loginError");
@@ -39,8 +39,14 @@
                     <h1><%=loginmsg%></h1>
                     <%
                         }
-
                         session.removeAttribute("loginError");
+                        String passmsg = (String) session.getAttribute("passformat");
+                        if (passmsg != null) {
+                    %>
+                    <p class="text-danger"><%=passmsg%></p>
+                    <%
+                        }
+                        session.removeAttribute("passformat");
                     %>
                 </div>
                 <form name="form" action="LoginServlet" method="post">
@@ -55,11 +61,11 @@
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <a href="register.jsp" class="btn btn-success">Register</a>
+                        <!--<a href="register.jsp" class="btn btn-success">Register</a>-->
                     </div>
                 </form>
             </div>
         </div>
-
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

@@ -9,6 +9,10 @@ import javax.ejb.Remote;
 public interface TestRemoteImpl {
 
     boolean saveUser(String name, String password, String subject, String mobile, int mark);
+
     Students logIn(String name, String password);
+
     List<Students> getLoginData(String name);
+
+    List<Students> findAllData();
 }

@@ -83,4 +83,14 @@ public class Test implements TestLocal {
         return query.getResultList();
     }
 
+    @Override
+    public List<Students> findAllData() {
+        List<Students> data = getAlldata();
+        return data;
+    }
+
+    public List<Students> getAlldata() {
+        Query query = em.createNamedQuery("Students.findAll");
+        return query.getResultList();
+    }
 }
