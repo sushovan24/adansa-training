@@ -2,9 +2,11 @@ package com.rajdemo.bl;
 
 import com.rajdemo.da.TestLocal;
 import com.rajdemo.entity.Marks;
-import com.rajdemo.entity.Mixture;
 import com.rajdemo.entity.StudentDetails;
 import com.rajdemo.entity.Students;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -31,6 +33,8 @@ public class TestRemote implements TestRemoteImpl {
         List<StudentDetails> stdList = new ArrayList<>();
         List<Marks> markList = new ArrayList<>();
 
+        String encryptPass = encriptPassword(password);
+
         s = new Students();
 
         sd = new StudentDetails();
@@ -47,7 +51,7 @@ public class TestRemote implements TestRemoteImpl {
         s.setMarkList(markList);
         s.setSdList(stdList);
         s.setStudentName(name);
-        s.setPassword(password);
+        s.setPassword(encryptPass);
 
         boolean valid = local.saveUser(s);
         if (valid) {
@@ -59,8 +63,8 @@ public class TestRemote implements TestRemoteImpl {
 
     @Override
     public Students logIn(String name, String password) {
-        Students s =local.LogIn(name, password);
-        
+        String encryptPass = encriptPassword(password);
+        Students s = local.LogIn(name, encryptPass);
         return s;
     }
 
@@ -71,8 +75,23 @@ public class TestRemote implements TestRemoteImpl {
 
     @Override
     public List<Students> findAllData() {
-        List<Students> data= local.findAllData();
+        List<Students> data = local.findAllData();
         return data;
     }
 
+    public String encriptPassword(String password) {
+        String encryptPass = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            byte[] b = md.digest(password.getBytes());
+            BigInteger num = new BigInteger(1, b);
+            encryptPass = num.toString(16);
+            while (encryptPass.length() < 32) {
+                encryptPass = "0" + encryptPass;
+            }
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println(e);
+        }
+        return encryptPass;
+    }
 }

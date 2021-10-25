@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import sun.security.provider.SHA;
 
 @Stateless
 public class Test implements TestLocal {
@@ -48,7 +49,7 @@ public class Test implements TestLocal {
         s = null;
         List<Students> data = getLoginData(name);
         for (Students d : data) {
-            if (d.getStudentName().equals(name) && d.getPassword().equals(password)) {
+            if (d.getStudentName().equals(name) && (password).equals(d.getPassword())) {
                 s = new Students();
                 userid = d.getId();
                 List<StudentDetails> sdList = findStudentDetails(userid);
