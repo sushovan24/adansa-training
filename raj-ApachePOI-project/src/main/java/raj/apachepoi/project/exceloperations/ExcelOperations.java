@@ -4,16 +4,42 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.FontFamily;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFCreationHelper;
+import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import raj.apachepoi.project.helper.DatabaseHelper;
 
 public class ExcelOperations {
 
@@ -237,5 +263,204 @@ public class ExcelOperations {
 
         workbook.close();
         fis.close();
+    }
+
+    public void FormattingCellColor() throws FileNotFoundException, IOException {
+        XSSFWorkbook workbook = new XSSFWorkbook();
+        XSSFSheet sheet = workbook.createSheet("Sheet1");
+        XSSFRow row = sheet.createRow(1);
+
+        XSSFCellStyle cs = workbook.createCellStyle();
+        cs.setFillBackgroundColor(IndexedColors.BRIGHT_GREEN.getIndex());
+        cs.setFillPattern(FillPatternType.BIG_SPOTS);
+
+        XSSFCell cell = row.createCell(1);
+        cell.setCellValue("Welcome");
+        cell.setCellStyle(cs);
+
+        cs = workbook.createCellStyle();
+        cs.setFillForegroundColor(IndexedColors.BROWN.getIndex());
+        cs.setFillPattern(FillPatternType.ALT_BARS);
+
+        cell = row.createCell(2);
+        cell.setCellValue("raj");
+        cell.setCellStyle(cs);
+        FileOutputStream fos = new FileOutputStream(".\\datafiles\\color.xlsx");
+        workbook.write(fos);
+        workbook.close();
+        fos.close();
+        System.out.println("done");
+
+    }
+
+    public void Excelhm() throws FileNotFoundException, IOException {
+        XSSFWorkbook workbook = new XSSFWorkbook();
+        XSSFSheet sheet = workbook.createSheet("sheet1");
+
+        Map<String, String> map = new HashMap<>();
+        map.put("896532", "mohan");
+        map.put("896533", "Sohan");
+        map.put("896534", "Rohan");
+        map.put("896535", "Aditya");
+        map.put("896536", "Roshan");
+        map.put("896537", "Ponga");
+
+        int rownum = 0;
+        for (Map.Entry entry : map.entrySet()) {
+            XSSFRow row = sheet.createRow(rownum++);
+            row.createCell(0).setCellValue((String) entry.getKey());
+            row.createCell(1).setCellValue((String) entry.getValue());
+        }
+
+        FileOutputStream fos = new FileOutputStream(".\\datafiles\\studentinfo.xlsx");
+        workbook.write(fos);
+        workbook.close();
+        fos.close();
+        System.out.println("done");
+    }
+
+    public void ReadExcelhm() throws FileNotFoundException, IOException {
+        FileInputStream fis = new FileInputStream(".\\datafiles\\Book1.xlsx");
+        XSSFWorkbook workbook = new XSSFWorkbook(fis);
+        XSSFSheet sheetAt = workbook.getSheetAt(0);
+        int rows = sheetAt.getLastRowNum();
+
+        Map<Integer, String> map = new HashMap<>();
+
+        int r;
+        for (r = 0; r <= rows; r++) {
+            int key = (int) sheetAt.getRow(r).getCell(0).getNumericCellValue();
+            String value = sheetAt.getRow(r).getCell(1).getStringCellValue();
+            map.put(key, value);
+        }
+
+        for (Map.Entry entry : map.entrySet()) {
+            System.out.println(entry.getKey() + "     " + entry.getValue());
+        }
+
+        workbook.close();
+        fis.close();
+    }
+
+//    private Connection con;
+    public void DatabaseToExcel() throws FileNotFoundException, IOException, ClassNotFoundException {
+        try {
+
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:12753/training", "training", "training@123");
+
+            PreparedStatement ps = con.prepareStatement("select * from students");
+            ResultSet rs = ps.executeQuery();
+
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet = workbook.createSheet("studentdata");
+            XSSFRow row = sheet.createRow(0);
+
+            XSSFFont font = workbook.createFont();
+            font.setBold(true);
+            font.setFontHeight(14);
+
+            XSSFCellStyle style1 = workbook.createCellStyle();
+            style1.setBorderRight(BorderStyle.THIN);
+            style1.setBorderLeft(BorderStyle.THIN);
+            style1.setBorderTop(BorderStyle.THIN);
+            style1.setBorderBottom(BorderStyle.THIN);
+            style1.setFont(font);
+            style1.setAlignment(HorizontalAlignment.CENTER);
+            style1.setVerticalAlignment(VerticalAlignment.CENTER);
+
+            XSSFCell idcell = row.createCell(0);
+            idcell.setCellValue("id");
+            idcell.setCellStyle(style1);
+
+            XSSFCell namecell = row.createCell(1);
+            namecell.setCellValue("name");
+            namecell.setCellStyle(style1);
+
+            XSSFCell passcell = row.createCell(2);
+            passcell.setCellValue("password");
+            passcell.setCellStyle(style1);
+
+            XSSFCellStyle style = workbook.createCellStyle();
+            style.setAlignment(HorizontalAlignment.CENTER_SELECTION);
+            style.setVerticalAlignment(VerticalAlignment.CENTER);
+
+            XSSFCellStyle style2 = workbook.createCellStyle();
+            style2.setBorderRight(BorderStyle.THIN);
+
+            int r = 1;
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("student_name");
+                String pass = rs.getString("password");
+
+                row = sheet.createRow(r++);
+
+                XSSFCell cell = row.createCell(0);
+                cell.setCellValue(id);
+                cell.setCellStyle(style);
+
+                row.createCell(1).setCellValue(name);
+
+                XSSFCell lastcell = row.createCell(2);
+                lastcell.setCellValue(pass);
+                lastcell.setCellStyle(style2);
+
+            }
+            XSSFFont font1 = workbook.createFont();
+            font1.setBold(true);
+            font1.setFontHeight(10);
+            font1.setFamily(FontFamily.ROMAN);
+            CellStyle style4 = workbook.createCellStyle();
+            style4.setAlignment(HorizontalAlignment.CENTER);
+            style4.setVerticalAlignment(VerticalAlignment.CENTER);
+            style4.setFont(font1);
+            style4.setBorderBottom(BorderStyle.THIN);
+            style4.setBorderLeft(BorderStyle.THIN);
+            style4.setBorderRight(BorderStyle.THIN);
+            style4.setBorderTop(BorderStyle.THIN);
+
+            row = sheet.createRow(r++);
+            XSSFCell countcell = row.createCell(0);
+            countcell.setCellValue("TOTAL:-" + " " + (r - 1));
+            countcell.setCellStyle(style4);
+            row.createCell(1).setCellStyle(style4);
+            row.createCell(2).setCellStyle(style4);
+            CellRangeAddress merge = new CellRangeAddress(r - 1, r - 1, 0, 2);
+            sheet.addMergedRegion(merge);
+
+            row = sheet.createRow(r++);
+//            XSSFCreationHelper creationhelper = workbook.getCreationHelper();
+//            XSSFCellStyle style3 = workbook.createCellStyle();
+//            style3.setDataFormat(creationhelper.createDataFormat().getFormat("dd-MM-yyyy HH:mm aa"));
+            DateFormat df = new SimpleDateFormat("dd-MM-yyy hh:mm aa");
+            String date = df.format(new Date());
+            System.out.println(date);
+            XSSFCellStyle style5 = workbook.createCellStyle();
+            style5.setAlignment(HorizontalAlignment.CENTER);
+            style5.setVerticalAlignment(VerticalAlignment.CENTER);
+            style5.setBorderBottom(BorderStyle.THIN);
+            style5.setBorderLeft(BorderStyle.THIN);
+            style5.setBorderRight(BorderStyle.THIN);
+            style5.setBorderTop(BorderStyle.THIN);
+            style5.setFont(font1);
+
+            XSSFCell datecell = row.createCell(0);
+            datecell.setCellValue("date:- " + date);
+            datecell.setCellStyle(style5);
+            row.createCell(1).setCellStyle(style5);
+            row.createCell(2).setCellStyle(style5);
+            CellRangeAddress merge1 = new CellRangeAddress(r - 1, r - 1, 0, 2);
+            sheet.addMergedRegion(merge1);
+
+            FileOutputStream fos = new FileOutputStream(".\\datafiles\\stdata.xlsx");
+            workbook.write(fos);
+            workbook.close();
+            fos.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ExcelOperations.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
