@@ -1,4 +1,5 @@
 
+
 body {
     background-image: url(../img/green-curry-background.jpg);
     background-size: cover;
@@ -18,7 +19,7 @@ body {
 
 
 /***********************************************
-       students Registartiona and Login
+       Account Registartiona and Login
 ***********************************************/
 .box,
 .regbox{
@@ -188,5 +189,4 @@ body {
 .regbox a:hover {
     color: #eccc68;
 }
-
 

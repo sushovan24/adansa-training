@@ -10,7 +10,9 @@
     <body>
         <div class="container">
             <div class="regbox box">
+                <!-- for immage purpose used kar sakte hai 
                 <img class="avatar" src="img/collaboration.png">
+                -->
                 <h1>Students Register </h1>
                 <form action="RegisterServlet" method="post">
                     <p> Username</p>
