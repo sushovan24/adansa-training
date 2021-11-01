@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.demoproject.bl;
 
+package com.demoproject.bl;
 import com.demoproject.entity.Marks;
 import com.demoproject.entity.Students;
+import com.sun.xml.rpc.processor.modeler.j2ee.xml.string;
+import java.awt.List;
 import javax.ejb.Remote;
 
 /**
@@ -19,7 +16,11 @@ public interface TestRemoteRemote {
     void printData(int id);
     void addstudent(Students s);
     void addmarks(Marks m);// marks class data for 
-
+    boolean saveUser(string name,String password, String subject,String mobile, int mark);
+    Students logIn(String name,String password);
+    
+    List<Students> getloginData(String name);
+    List<students> findAlldata();
     @Override
     public boolean equals(Object obj);
 }

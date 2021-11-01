@@ -100,4 +100,8 @@ public class StudentDetails implements Serializable {
         return "com.demoproject.entity.StudentDetails[ id=" + id + " ]";
     }
 
+    public void setMarks(int mark) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

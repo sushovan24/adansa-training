@@ -1,9 +1,12 @@
 
 package com.login;
-
 import com.demoproject.bl.TestRemoteRemote;
+import com.demoproject.entity.Students;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
@@ -11,8 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
+import javax.servlet.http.HttpSession;
 @WebServlet(name = "loginpage", urlPatterns = {"/loginpage"})
 public class LoginPageServelete extends HttpServlet {
 
@@ -32,8 +34,20 @@ public class LoginPageServelete extends HttpServlet {
             
            // jndi
            TestRemoteRemote remote = (TestRemoteRemote) new InitialContext().lookup("java:global/demoprojectMohsinEjb/demoprojectMohsinEjb-ejb/TestRemote!com.demoproject.bl.TestRemoteRemote"); 
+           // fetch data from login page 
             String sname = request.getParameter("name");
             String password = request.getParameter("password");
+            
+   //create a database for ejb models Remote and war file ke liye
+            Students student = new Students(ConnectionPro.getConnection());
+            if (student.saveUser(userModel)) {
+                response.sendRedirect("index.html");
+            } else {
+                String errorMessage = "User Available";
+                HttpSession regSession = request.getSession();
+                regSession.setAttribute("RegError", errorMessage);
+                response.sendRedirect("register.jsp");
+            }
             
         }
     }
@@ -50,7 +64,11 @@ public class LoginPageServelete extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (NamingException ex) {
+            Logger.getLogger(LoginPageServelete.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -76,5 +94,15 @@ public class LoginPageServelete extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private static class UserDatabase {
+
+        public UserDatabase() {
+        }
+
+        private UserDatabase(Connection connection) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+    }
 
 }

@@ -6,6 +6,7 @@
 package com.servlet;
 
 import com.demoproject.bl.TestRemoteRemote;
+import com.demoproject.entity.Students;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -16,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 public class RegisterPageServelete extends HttpServlet {
 
     /**
@@ -38,6 +40,17 @@ public class RegisterPageServelete extends HttpServlet {
             String mobile = request.getParameter("mobile");
             String sub = request.getParameter("subject");
             int mark = Integer.parseInt(request.getParameter("marks"));
+            
+            //create a database model   we can used for jdbc for connection purpose
+            Students student = new Students(ConnectionPro.getConnection());
+            if (Students.saveUser(userModel)) {
+                response.sendRedirect("index.html");
+            } else {
+                String errorMessage = "User Available";
+                HttpSession regSession = request.getSession();
+                regSession.setAttribute("RegError", errorMessage);
+                response.sendRedirect("register.jsp");
+            }
 
         }
     }

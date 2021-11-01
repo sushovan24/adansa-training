@@ -116,4 +116,8 @@ public class Students implements Serializable {
         return "com.demoproject.entity.Students[ id=" + id + " ]";
     }
 
+    public void setSdList(List<StudentDetails> stdlist) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
