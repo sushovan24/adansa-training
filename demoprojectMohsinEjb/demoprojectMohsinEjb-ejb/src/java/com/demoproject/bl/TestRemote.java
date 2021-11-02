@@ -53,7 +53,7 @@ public class TestRemote implements TestRemoteRemote{
     public boolean saveUser(string name, String password, String subject, String mobile, int mark) {
      boolean f= false;
      List<StudentDetails> stdlist=new ArrayList<>();
-     List<marks> marklist=new ArrayList<>();
+     List<Marks> marklist=new ArrayList<>();
      
      String encriptPass=encriptPassword(password);
      
@@ -74,8 +74,8 @@ public class TestRemote implements TestRemoteRemote{
      s.setStudentName(subject);
      s.setPassword(encriptPass);
      
-     boolean valid=local.saveUser(s);
-     if(valid){
+     local.saveUser(s);
+     if(){
          f=true;
            }
      return f;
@@ -105,7 +105,7 @@ public class TestRemote implements TestRemoteRemote{
         String encriptPass=null;
         try{
           
-            MessageDigest md=MessageDigest.getInstantce("SHA-1");
+            MessageDigest md=MessageDigest.getInstance("SHA-1");
             byte[] b=md.digest(password.getBytes());
             BigInteger num=new BigInteger(1,b);
             encriptPass=num.toString(16);
@@ -113,11 +113,16 @@ public class TestRemote implements TestRemoteRemote{
                 encriptPass="0" + encriptPass;
             }
         }
-          catch(NoSuchAlgorithmException e){
+          catch(Exception e){
             System.out.println(e);
                
         }
         return encriptPass;
         
+    }
+
+    @Override
+    public Object getloginData(String name) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -49,6 +49,7 @@
             
 
         %>
-
+        <a href="registrationpage.jsp"></a>
+        <a href="loginpage.jsp"></a>
     </body>
 </html>

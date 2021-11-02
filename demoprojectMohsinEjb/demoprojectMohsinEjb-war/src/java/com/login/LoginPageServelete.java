@@ -39,8 +39,8 @@ public class LoginPageServelete extends HttpServlet {
             String password = request.getParameter("password");
             
    //create a database for ejb models Remote and war file ke liye
-            Students student = new Students(ConnectionPro.getConnection());
-            if (student.saveUser(userModel)) {
+            Students student = new Students();
+            if (student.saveUser(saveUser)) {
                 response.sendRedirect("index.html");
             } else {
                 String errorMessage = "User Available";
@@ -94,15 +94,5 @@ public class LoginPageServelete extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private static class UserDatabase {
-
-        public UserDatabase() {
-        }
-
-        private UserDatabase(Connection connection) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-    }
 
 }
