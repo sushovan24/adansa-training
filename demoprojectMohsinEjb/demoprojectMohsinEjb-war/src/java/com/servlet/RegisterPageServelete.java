@@ -41,9 +41,12 @@ public class RegisterPageServelete extends HttpServlet {
             String sub = request.getParameter("subject");
             int mark = Integer.parseInt(request.getParameter("marks"));
             
+            // user name and password only 
+            // login page only 
+            
             //create a database model   we can used for jdbc for connection purpose
-            Students student = new Students(ConnectionPro.getConnection());
-            if (Students.saveUser(userModel)) {
+            Students student = new Students(1);
+            if (student.saveUser(userModel)) {
                 response.sendRedirect("index.html");
             } else {
                 String errorMessage = "User Available";

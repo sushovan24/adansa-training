@@ -40,7 +40,7 @@ public class LoginPageServelete extends HttpServlet {
             
    //create a database for ejb models Remote and war file ke liye
             Students student = new Students();
-            if (student.saveUser(saveUser)) {
+            if (name.equals(name)&& password.equals(password)) {
                 response.sendRedirect("index.html");
             } else {
                 String errorMessage = "User Available";
