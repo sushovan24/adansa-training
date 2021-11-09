@@ -39,18 +39,29 @@ public class LoginPageServelete extends HttpServlet {
             String password = request.getParameter("password");
             
    //create a database for ejb models Remote and war file ke liye
-            Students student = new Students();
-            if (name.equals(name)&& password.equals(password)) {
-                response.sendRedirect("index.html");
-            } else {
-                String errorMessage = "User Available";
-                HttpSession regSession = request.getSession();
-                regSession.setAttribute("RegError", errorMessage);
-                response.sendRedirect("register.jsp");
-            }
-            
-        }
-    }
+           
+		Student s = new Student();
+	        s.setUsername(name);
+		s.setPassword(password);
+
+		try {
+			if (loginDao.validate(loginBean)) {
+				//HttpSession session = request.getSession();
+				// session.setAttribute("username",username);
+				response.sendRedirect("loginsuccess.jsp");
+			} else {
+				HttpSession session = request.getSession();
+				//session.setAttribute("user", username);
+				//response.sendRedirect("login.jsp");
+			}
+		} 
+                catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

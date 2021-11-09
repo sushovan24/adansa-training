@@ -75,7 +75,7 @@ public class TestRemote implements TestRemoteRemote{
      s.setPassword(encriptPass);
      
      local.saveUser(s);
-     if(){
+     if(true){
          f=true;
            }
      return f;
@@ -123,6 +123,11 @@ public class TestRemote implements TestRemoteRemote{
 
     @Override
     public Object getloginData(String name) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean saveUser(String name, String password, String sub, String mobile, int mark) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

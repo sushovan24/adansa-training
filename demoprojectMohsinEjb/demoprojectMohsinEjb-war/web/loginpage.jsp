@@ -13,7 +13,7 @@
                <img class="avatar" src="img/collaboration.png"> 
                -->
                 <h1>
-                      Login Account</h1>
+                      StudentsPage </h1>
                 <form action="LoginPageServlet" method="post">
                     <p>
                         Username</p>

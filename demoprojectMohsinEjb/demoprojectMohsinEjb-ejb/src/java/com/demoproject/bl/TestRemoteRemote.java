@@ -23,4 +23,10 @@ public interface TestRemoteRemote {
     List<students> findAlldata();
     @Override
     public boolean equals(Object obj);
+
+    public boolean saveUser(String name, String password, String sub, String mobile, int mark);
+
+   // public boolean saveUser(String name, String password, String sub, String mobile, int mark);
+
+   // public boolean saveUser(String name, String password, String sub, String mobile, int mark);
 }
