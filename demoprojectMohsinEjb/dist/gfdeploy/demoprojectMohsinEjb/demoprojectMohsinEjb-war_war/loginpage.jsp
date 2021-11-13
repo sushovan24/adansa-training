@@ -9,19 +9,17 @@
     <body>
         <div class="container">
             <div class="regbox box">
-               <!--   for immage seating ke liye  used kar sakte ho 
-               <img class="avatar" src="img/collaboration.png"> 
-               -->
-                <h1>
-                      Login Account</h1>
-                <form action="LoginPageServlet" method="post">
-                    <p>
-                        Username</p>
+                <!--   for immage seating ke liye  used kar sakte ho 
+                <img class="avatar" src="img/collaboration.png"> 
+                -->
+                <h1> StudentsPage </h1>
+                <form action="TestServlet" method="post">
+                    <p>Username</p>
                     <input type="text" placeholder="Username" name="name" required>
-                    <p>
-                        Password</p>
+                    <p>Password</p>
                     <input type="password" placeholder="Password" name="password" required>
                     <input type="submit" value="Login">
+                    <button type="submit" > login </button>
                     <p>
                         <a href="index.jsp">Create New Account</a>
                     </p>

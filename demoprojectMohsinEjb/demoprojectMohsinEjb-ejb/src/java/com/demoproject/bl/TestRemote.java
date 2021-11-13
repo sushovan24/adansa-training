@@ -1,4 +1,3 @@
-
 package com.demoproject.bl;
 
 import com.demoproject.da.TestLocalLocal;
@@ -15,17 +14,17 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
 
-
 @Stateless
 @LocalBean
-public class TestRemote implements TestRemoteRemote{
+public class TestRemote implements TestRemoteRemote {
+
     Students s;
     StudentDetails sd;
     Marks m;
 
     @EJB
     private TestLocalLocal local;
-    
+
     @Override
     public void print(String msg) {
         local.print(msg);
@@ -33,7 +32,6 @@ public class TestRemote implements TestRemoteRemote{
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-
     @Override
     public void printData(int id) {
         local.printData(id);
@@ -51,83 +49,86 @@ public class TestRemote implements TestRemoteRemote{
 
     @Override
     public boolean saveUser(string name, String password, String subject, String mobile, int mark) {
-     boolean f= false;
-     List<StudentDetails> stdlist=new ArrayList<>();
-     List<Marks> marklist=new ArrayList<>();
-     
-     String encriptPass=encriptPassword(password);
-     
-     s=new Students();
-     sd=new StudentDetails();
-     sd.setMobile(mobile);
-     sd.setStudentId(s);
-     stdlist.add(sd);
-     
-     m=new Marks();
-     m.setSubject(subject);
-     m.setStudId(s);
-     m.setMark(mark);
-     marklist.add(m);
-    
-     s.setMarkList(marklist);
-     s.setSdList(stdlist);
-     s.setStudentName(subject);
-     s.setPassword(encriptPass);
-     
-     local.saveUser(s);
-     if(true){
-         f=true;
-           }
-     return f;
+        boolean f = false;
+        List<StudentDetails> stdlist = new ArrayList<>();
+        List<Marks> marklist = new ArrayList<>();
+
+        String encriptPass = encriptPassword(password);
+
+        s = new Students();
+        sd = new StudentDetails();
+        sd.setMobile(mobile);
+        sd.setStudentId(s);
+        stdlist.add(sd);
+
+        m = new Marks();
+        m.setSubject(subject);
+        m.setStudId(s);
+        m.setMark(mark);
+        marklist.add(m);
+
+        s.setMarkList(marklist);
+        s.setSdList(stdlist);
+        s.setStudentName(subject);
+        s.setPassword(encriptPass);
+
+        local.saveUser(s);
+        if (true) {
+            f = true;
+        }
+        return f;
     }
 
     @Override
     public Students logIn(String name, String password) {
-     String encriptPass=encriptPassword(password);
-     Students s=local.logIn(name, encriptPass);
-     return s;
+        String encriptPass = encriptPassword(password);
+        Students s = local.logIn(name, encriptPass);
+        return s;
     }
-    
 
     public List<Students> getLoginData(String name) {
         return local.getLoginData(name);
-        
+
     }
 
-    public List<Students> findAlldata() {
-       List<Students> data = local.findAlldata();
-        return data;
-    }
-
-    
     // Message Driven Purpose used kiya gya hai 
     private String encriptPassword(String password) {
-        String encriptPass=null;
-        try{
-          
-            MessageDigest md=MessageDigest.getInstance("SHA-1");
-            byte[] b=md.digest(password.getBytes());
-            BigInteger num=new BigInteger(1,b);
-            encriptPass=num.toString(16);
-            while(encriptPass.length()<32){
-                encriptPass="0" + encriptPass;
+        String encriptPass = null;
+        try {
+
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            byte[] b = md.digest(password.getBytes());
+            BigInteger num = new BigInteger(1, b);
+            encriptPass = num.toString(16);
+            while (encriptPass.length() < 32) {
+                encriptPass = "0" + encriptPass;
             }
-        }
-          catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
-               
+
         }
         return encriptPass;
-        
-    }
 
-    @Override
-    public Object getloginData(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public boolean saveUser(String name, String password, String sub, String mobile, int mark) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<Students> getloginData(String name) {
+        List<Students> list;
+        list = local.getLoginData(name);
+
+        return list;
+    }
+
+    @Override
+    public List<Students> findAlldata() {
+        List<Students> list;
+        list = local.findAlldata();
+        return list;
+    }
+
 }

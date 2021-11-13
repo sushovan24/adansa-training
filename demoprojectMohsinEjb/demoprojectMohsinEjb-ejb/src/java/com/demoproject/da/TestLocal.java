@@ -2,6 +2,7 @@ package com.demoproject.da;
 
 import com.demoproject.entity.Marks;
 import com.demoproject.entity.Students;
+import static com.demoproject.entity.Students_.studentName;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -56,11 +57,14 @@ public class TestLocal implements TestLocalLocal {
 
     @Override
     public List<Students> getLoginData(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Query query = em.createNamedQuery("Students.findByStudentName");
+        query.setParameter("studentName", name);
+        return query.getResultList();
     }
 
     @Override
     public List<Students> findAlldata() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Query query = em.createNamedQuery("Students.findAll");
+        return query.getResultList();
     }
 }
