@@ -22,4 +22,5 @@ public interface TestLocalLocal {
     public List<Students> getLoginData(String name);
 
     public List<Students> findAlldata();
+    boolean userLogin(String username, String password);
 }

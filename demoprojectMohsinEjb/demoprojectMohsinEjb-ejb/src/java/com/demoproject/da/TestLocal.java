@@ -67,4 +67,18 @@ public class TestLocal implements TestLocalLocal {
         Query query = em.createNamedQuery("Students.findAll");
         return query.getResultList();
     }
+
+    @Override
+    public boolean userLogin(String username, String password) {
+        boolean f = false;
+        Query q = em.createNamedQuery("Students.findByStudentName");
+        List<Students> list = q.getResultList();
+        for (Students s : list) {
+            if (s.getStudentName().equalsIgnoreCase(username) && s.getPassword().endsWith(password)) {
+                f = true;
+                break;
+            }
+        }
+        return f;
+    }
 }

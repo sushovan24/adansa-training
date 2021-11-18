@@ -34,6 +34,7 @@ public interface TestRemoteRemote {
 
     public boolean saveUser(String name, String password, String sub, String mobile, int mark);
 
+    boolean userLogin(String name, String password);
     // public boolean saveUser(String name, String password, String sub, String mobile, int mark);
     // public boolean saveUser(String name, String password, String sub, String mobile, int mark);
 }

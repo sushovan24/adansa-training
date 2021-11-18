@@ -131,4 +131,9 @@ public class TestRemote implements TestRemoteRemote {
         return list;
     }
 
+    @Override
+    public boolean userLogin(String name, String password) {
+        return local.userLogin(name, password);
+    }
+
 }
