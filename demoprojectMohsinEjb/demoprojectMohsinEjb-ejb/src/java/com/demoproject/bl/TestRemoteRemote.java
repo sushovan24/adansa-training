@@ -1,6 +1,7 @@
 package com.demoproject.bl;
 
 import com.demoproject.entity.Marks;
+import com.demoproject.entity.RlbVredisMap;
 import com.demoproject.entity.Students;
 import com.sun.xml.rpc.processor.modeler.j2ee.xml.string;
 import javax.ejb.Remote;
@@ -37,4 +38,7 @@ public interface TestRemoteRemote {
     boolean userLogin(String name, String password);
     // public boolean saveUser(String name, String password, String sub, String mobile, int mark);
     // public boolean saveUser(String name, String password, String sub, String mobile, int mark);
+    
+    List<RlbVredisMap> accessData();
+    void saveData(RlbVredisMap rlb);
 }

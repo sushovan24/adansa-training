@@ -1,6 +1,7 @@
 package com.demoproject.da;
 
 import com.demoproject.entity.Marks;
+import com.demoproject.entity.RlbVredisMap;
 import com.demoproject.entity.Students;
 import java.util.List;
 import javax.ejb.Local;
@@ -23,4 +24,7 @@ public interface TestLocalLocal {
 
     public List<Students> findAlldata();
     boolean userLogin(String username, String password);
+    
+    List<RlbVredisMap> accessData();
+    void saveData(RlbVredisMap rlb);
 }

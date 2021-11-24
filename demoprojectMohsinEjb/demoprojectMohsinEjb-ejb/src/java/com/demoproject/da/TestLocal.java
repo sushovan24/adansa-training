@@ -1,8 +1,8 @@
 package com.demoproject.da;
 
 import com.demoproject.entity.Marks;
+import com.demoproject.entity.RlbVredisMap;
 import com.demoproject.entity.Students;
-import static com.demoproject.entity.Students_.studentName;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -80,5 +80,22 @@ public class TestLocal implements TestLocalLocal {
             }
         }
         return f;
+    }
+
+    @Override
+    public List<RlbVredisMap> accessData() {
+        Query query = em.createNamedQuery("RlbVredisMap.findAll");
+        return query.getResultList();
+    }
+
+    @Override
+    public void saveData(RlbVredisMap rlb) {
+        System.out.println(rlb.getCid());
+        System.out.println(rlb.getAction());
+        System.out.println(rlb.getRedisId());
+        System.out.println(rlb.getDtCreate());
+        em.persist(rlb);
+        em.flush();
+        System.out.println(rlb.getId()); 
     }
 }

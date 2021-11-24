@@ -1,7 +1,7 @@
 package com.demoproject.bl;
-
 import com.demoproject.da.TestLocalLocal;
 import com.demoproject.entity.Marks;
+import com.demoproject.entity.RlbVredisMap;
 import com.demoproject.entity.StudentDetails;
 import com.demoproject.entity.Students;
 import com.sun.xml.rpc.processor.modeler.j2ee.xml.string;
@@ -134,6 +134,17 @@ public class TestRemote implements TestRemoteRemote {
     @Override
     public boolean userLogin(String name, String password) {
         return local.userLogin(name, password);
+    }
+
+    @Override
+    public List<RlbVredisMap> accessData() {
+        List<RlbVredisMap> list= local.accessData();// calling
+        return list;
+    }
+
+    @Override
+    public void saveData(RlbVredisMap rlb) {
+        local.saveData(rlb);
     }
 
 }
