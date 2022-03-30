@@ -26,7 +26,7 @@ public class DataPerperationFromProc implements DataPerperationFromProcRemote {
     @EJB
     private StudentDALocal stdLocal;
 
-    public String DataPerpLogic() {
+    public String dataPerpLogic() {
         String response = "";
         try {
 
